@@ -3,7 +3,7 @@ use std::fmt::{Display, Formatter};
 use std::ops::{Add, AddAssign, Div, Mul, MulAssign, Sub, SubAssign};
 
 #[derive(Debug, Clone, PartialEq)]
-struct Vector3 {
+pub struct Vector3 {
     x: f64,
     y: f64,
     z: f64,
@@ -152,6 +152,30 @@ impl Point3 {
     }
     pub fn z(&self) -> f64 {
         self.0.z
+    }
+}
+
+impl Add<Vector3> for Point3 {
+    type Output = Point3;
+
+    fn add(self, rhs: Vector3) -> Self::Output {
+        (&self).add(&rhs)
+    }
+}
+
+impl Add<Vector3> for &Point3 {
+    type Output = Point3;
+
+    fn add(self, rhs: Vector3) -> Self::Output {
+        (&self).add(rhs)
+    }
+}
+
+impl Add<&Vector3> for &Point3 {
+    type Output = Point3;
+
+    fn add(self, rhs: &Vector3) -> Self::Output {
+        Self::Output::new(self.x() + rhs.x(), self.y() + rhs.y(), self.z() + rhs.z())
     }
 }
 
