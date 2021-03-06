@@ -1,5 +1,6 @@
 use crate::to_pixel_value;
 use std::fmt::{Display, Formatter};
+use std::iter::Sum;
 use std::ops::{Add, AddAssign, Div, Mul, MulAssign, Neg, Sub, SubAssign};
 
 #[derive(Debug, Clone, PartialEq)]
@@ -12,6 +13,9 @@ pub struct Vector3 {
 impl Vector3 {
     pub fn new(x: f64, y: f64, z: f64) -> Self {
         Vector3 { x, y, z }
+    }
+    pub fn zero() -> Self {
+        Self::new(0.0, 0.0, 0.0)
     }
     pub fn one() -> Self {
         Self::new(1.0, 1.0, 1.0)
@@ -152,6 +156,16 @@ impl MulAssign<f64> for Vector3 {
         self.x *= rhs;
         self.y *= rhs;
         self.z *= rhs;
+    }
+}
+
+impl Sum<Vector3> for Vector3 {
+    fn sum<I: Iterator<Item = Vector3>>(iter: I) -> Self {
+        let mut s = Self::zero();
+        for v in iter {
+            s += v;
+        }
+        s
     }
 }
 
