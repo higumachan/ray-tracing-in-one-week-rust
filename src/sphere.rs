@@ -2,9 +2,15 @@ use crate::hit::{Hit, HitRecord};
 use crate::ray::Ray;
 use crate::vector3::Point3;
 
-struct Sphere {
+pub struct Sphere {
     center: Point3,
     radius: f64,
+}
+
+impl Sphere {
+    pub fn new(center: Point3, radius: f64) -> Self {
+        Sphere { center, radius }
+    }
 }
 
 impl Hit for Sphere {
