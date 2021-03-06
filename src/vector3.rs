@@ -9,14 +9,14 @@ const EPS: f64 = 1e-8;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Vector3 {
-    x: f64,
-    y: f64,
-    z: f64,
+    elements: [f64; 3],
 }
 
 impl Vector3 {
     pub fn new(x: f64, y: f64, z: f64) -> Self {
-        Vector3 { x, y, z }
+        Vector3 {
+            elements: [x, y, z],
+        }
     }
     pub fn zero() -> Self {
         Self::new(0.0, 0.0, 0.0)
@@ -34,13 +34,13 @@ impl Vector3 {
         Self::new(0.0, 0.0, z)
     }
     pub fn x(&self) -> f64 {
-        self.x
+        unsafe { *self.elements.get_unchecked(0) }
     }
     pub fn y(&self) -> f64 {
-        self.y
+        unsafe { *self.elements.get_unchecked(1) }
     }
     pub fn z(&self) -> f64 {
-        self.z
+        unsafe { *self.elements.get_unchecked(2) }
     }
 
     pub fn length_squared(&self) -> f64 {
@@ -52,19 +52,23 @@ impl Vector3 {
     }
 
     pub fn dot(&self, rhs: &Self) -> f64 {
-        self.x * rhs.x + self.y * rhs.y + self.z * rhs.z
+        self.elements
+            .iter()
+            .zip(rhs.elements.iter())
+            .map(|(a, b)| a * b)
+            .sum()
     }
 
     pub fn cross(&self, rhs: &Self) -> Self {
         Self::new(
-            self.y * rhs.z - self.z * rhs.y,
-            self.z * rhs.x - self.x * rhs.z,
-            self.x * rhs.y - self.y * rhs.x,
+            self.y() * rhs.z() - self.z() * rhs.y(),
+            self.z() * rhs.x() - self.x() * rhs.z(),
+            self.x() * rhs.y() - self.y() * rhs.x(),
         )
     }
 
     pub fn sqrt(&self) -> Self {
-        Self::new(self.x.sqrt(), self.y.sqrt(), self.z.sqrt())
+        Self::new_from_iter(self.elements.iter().map(|x| f64::sqrt(*x)))
     }
 
     pub fn unit_vector(&self) -> Self {
@@ -103,7 +107,21 @@ impl Vector3 {
     }
 
     pub fn approx_zero(&self) -> bool {
-        self.x.abs() < EPS && self.y.abs() < EPS && self.z.abs() < EPS
+        self.elements.iter().all(|x| x.abs() < EPS)
+    }
+
+    fn new_from_iter<I: Iterator<Item = f64>>(mut iter: I) -> Self {
+        Self {
+            elements: [
+                iter.next().unwrap(),
+                iter.next().unwrap(),
+                iter.next().unwrap(),
+            ],
+        }
+    }
+
+    fn zip_elements<'a>(&'a self, other: &'a Self) -> impl Iterator<Item = (&'a f64, &'a f64)> {
+        self.elements.iter().zip(other.elements.iter())
     }
 }
 
@@ -111,7 +129,7 @@ impl Neg for Vector3 {
     type Output = Self;
 
     fn neg(self) -> Self::Output {
-        Self::new(-self.x, -self.y, -self.z)
+        Self::new_from_iter(self.elements.iter().copied().map(f64::neg))
     }
 }
 
@@ -127,7 +145,7 @@ impl Add for &Vector3 {
     type Output = Vector3;
 
     fn add(self, rhs: Self) -> Self::Output {
-        Self::Output::new(self.x + rhs.x, self.y + rhs.y, self.z + rhs.z)
+        Self::Output::new_from_iter(self.zip_elements(rhs).map(|(a, b)| a + b))
     }
 }
 
@@ -143,7 +161,7 @@ impl Sub for &Vector3 {
     type Output = Vector3;
 
     fn sub(self, rhs: Self) -> Self::Output {
-        Self::Output::new(self.x - rhs.x, self.y - rhs.y, self.z - rhs.z)
+        Self::Output::new_from_iter(self.zip_elements(rhs).map(|(a, b)| a - b))
     }
 }
 
@@ -151,7 +169,7 @@ impl Mul<f64> for &Vector3 {
     type Output = Vector3;
 
     fn mul(self, rhs: f64) -> Self::Output {
-        Vector3::new(self.x * rhs, self.y * rhs, self.z * rhs)
+        Self::Output::new_from_iter(self.elements.iter().map(|x| x * rhs))
     }
 }
 
@@ -167,7 +185,7 @@ impl Div<f64> for &Vector3 {
     type Output = Vector3;
 
     fn div(self, rhs: f64) -> Self::Output {
-        Vector3::new(self.x / rhs, self.y / rhs, self.z / rhs)
+        Self::Output::new_from_iter(self.elements.iter().map(|x| x / rhs))
     }
 }
 
@@ -181,24 +199,24 @@ impl Div<f64> for Vector3 {
 
 impl AddAssign for Vector3 {
     fn add_assign(&mut self, rhs: Self) {
-        self.x += rhs.x;
-        self.y += rhs.y;
-        self.z += rhs.z;
+        self.elements
+            .iter_mut()
+            .zip(rhs.elements.iter())
+            .for_each(|(x, y)| *x += y);
     }
 }
 impl SubAssign for Vector3 {
     fn sub_assign(&mut self, rhs: Self) {
-        self.x -= rhs.x;
-        self.y -= rhs.y;
-        self.z -= rhs.z;
+        self.elements
+            .iter_mut()
+            .zip(rhs.elements.iter())
+            .for_each(|(x, y)| *x -= y);
     }
 }
 
 impl MulAssign<f64> for Vector3 {
     fn mul_assign(&mut self, rhs: f64) {
-        self.x *= rhs;
-        self.y *= rhs;
-        self.z *= rhs;
+        self.elements.iter_mut().for_each(|x| *x += rhs);
     }
 }
 
@@ -241,19 +259,19 @@ impl From<Vector3> for Point3 {
 
 impl Point3 {
     pub fn new(x: f64, y: f64, z: f64) -> Self {
-        Self(Vector3 { x, y, z })
+        Self(Vector3::new(x, y, z))
     }
     pub fn zero() -> Self {
         Self::new(0.0, 0.0, 0.0)
     }
     pub fn x(&self) -> f64 {
-        self.0.x
+        self.0.x()
     }
     pub fn y(&self) -> f64 {
-        self.0.y
+        self.0.y()
     }
     pub fn z(&self) -> f64 {
-        self.0.z
+        self.0.z()
     }
 
     pub fn new_x(x: f64) -> Self {
@@ -326,16 +344,16 @@ impl From<Vector3> for Color {
 
 impl Color {
     pub fn new(r: f64, g: f64, b: f64) -> Self {
-        Self(Vector3 { x: r, y: g, z: b })
+        Self(Vector3::new(r, g, b))
     }
     pub fn r(&self) -> f64 {
-        self.0.x
+        self.0.x()
     }
     pub fn g(&self) -> f64 {
-        self.0.y
+        self.0.y()
     }
     pub fn b(&self) -> f64 {
-        self.0.z
+        self.0.z()
     }
 
     pub fn red() -> Self {
