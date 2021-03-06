@@ -1,9 +1,11 @@
 use crate::to_pixel_value;
 use rand::rngs::ThreadRng;
-use rand::Rng;
+use rand::{Rng, RngCore};
 use std::fmt::{Display, Formatter};
 use std::iter::Sum;
-use std::ops::{Add, AddAssign, Div, Mul, MulAssign, Neg, Range, Sub, SubAssign};
+use std::ops::{Add, AddAssign, Deref, DerefMut, Div, Mul, MulAssign, Neg, Range, Sub, SubAssign};
+
+const EPS: f64 = 1e-8;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Vector3 {
@@ -73,7 +75,7 @@ impl Vector3 {
         Vector3::new(rng.gen(), rng.gen(), rng.gen())
     }
 
-    pub fn random_range(rng: &mut ThreadRng, range: Range<f64>) -> Self {
+    pub fn random_range<R: RngCore>(rng: &mut R, range: Range<f64>) -> Self {
         Vector3::new(
             rng.gen_range(range.clone()),
             rng.gen_range(range.clone()),
@@ -81,7 +83,7 @@ impl Vector3 {
         )
     }
 
-    pub fn random_in_unit_sphere(rng: &mut ThreadRng) -> Self {
+    pub fn random_in_unit_sphere<R: RngCore>(rng: &mut R) -> Self {
         loop {
             let p = Self::random_range(
                 rng,
@@ -96,8 +98,12 @@ impl Vector3 {
         }
     }
 
-    pub fn random_unit_vector(rng: &mut ThreadRng) -> Self {
+    pub fn random_unit_vector<R: RngCore>(rng: &mut R) -> Self {
         Self::random_in_unit_sphere(rng).unit_vector()
+    }
+
+    pub fn approx_zero(&self) -> bool {
+        self.x.abs() < EPS && self.y.abs() < EPS && self.z.abs() < EPS
     }
 }
 

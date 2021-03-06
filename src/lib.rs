@@ -3,6 +3,7 @@ use std::f64::consts::PI;
 pub mod camera;
 pub mod hit;
 pub mod hit_objects;
+mod lambertian;
 mod material;
 pub mod ray;
 pub mod sphere;

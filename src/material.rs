@@ -1,12 +1,23 @@
+use crate::hit::HitRecord;
 use crate::ray::Ray;
 use crate::vector3::Color;
 use std::fmt::Debug;
 
-struct ScatterResult {
+#[derive(Debug, Clone)]
+pub struct ScatterResult {
     attenuation: Color,
     scattered: Ray,
 }
 
+impl ScatterResult {
+    pub fn new(attenuation: Color, scattered: Ray) -> Self {
+        ScatterResult {
+            attenuation,
+            scattered,
+        }
+    }
+}
+
 pub trait Material: Debug {
-    fn scatter(&self) -> Option<ScatterResult>;
+    fn scatter(&self, input: &Ray, record: &HitRecord) -> Option<ScatterResult>;
 }
