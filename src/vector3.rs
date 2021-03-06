@@ -61,6 +61,10 @@ impl Vector3 {
         )
     }
 
+    pub fn sqrt(&self) -> Self {
+        Self::new(self.x.sqrt(), self.y.sqrt(), self.z.sqrt())
+    }
+
     pub fn unit_vector(&self) -> Self {
         self / self.length()
     }
