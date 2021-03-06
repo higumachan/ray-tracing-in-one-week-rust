@@ -1,11 +1,12 @@
 use crate::ray::Ray;
 use crate::vector3::Color;
+use std::fmt::Debug;
 
 struct ScatterResult {
     attenuation: Color,
     scattered: Ray,
 }
 
-trait Material {
-    fn scatter() -> Option<ScatterResult>;
+pub trait Material: Debug {
+    fn scatter(&self) -> Option<ScatterResult>;
 }

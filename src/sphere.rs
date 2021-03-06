@@ -1,15 +1,22 @@
 use crate::hit::{Hit, HitRecord};
+use crate::material::Material;
 use crate::ray::Ray;
 use crate::vector3::Point3;
+use std::rc::Rc;
 
 pub struct Sphere {
     center: Point3,
     radius: f64,
+    material: Rc<dyn Material>,
 }
 
 impl Sphere {
-    pub fn new(center: Point3, radius: f64) -> Self {
-        Sphere { center, radius }
+    pub fn new(center: Point3, radius: f64, material: Rc<dyn Material>) -> Self {
+        Sphere {
+            center,
+            radius,
+            material,
+        }
     }
 }
 
@@ -33,6 +40,12 @@ impl Hit for Sphere {
 
         let p = ray.at(root);
         let outward_normal = (&p - &self.center) / self.radius;
-        Some(HitRecord::new(p, root, outward_normal, ray))
+        Some(HitRecord::new(
+            p,
+            root,
+            outward_normal,
+            ray,
+            self.material.clone(),
+        ))
     }
 }
