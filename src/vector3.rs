@@ -1,3 +1,5 @@
+use crate::to_pixel_value;
+use std::fmt::{Display, Formatter};
 use std::ops::{Add, AddAssign, Div, Mul, MulAssign, Sub, SubAssign};
 
 #[derive(Debug, Clone, PartialEq)]
@@ -174,6 +176,18 @@ impl Color {
     }
     pub fn b(&self) -> f64 {
         self.0.z
+    }
+}
+
+impl Display for Color {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{} {} {}",
+            to_pixel_value(self.r()),
+            to_pixel_value(self.g()),
+            to_pixel_value(self.b())
+        )
     }
 }
 
