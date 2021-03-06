@@ -9,8 +9,13 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="9.3. Modeling Light Scatter and Reflectance">
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="refactoring Vector3">
+      <change afterPath="$PROJECT_DIR$/examples/9_3_modeling_light_scatter_and_reflectance.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hit.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/hit.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lambertian.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lambertian.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/material.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,21 +65,7 @@
       <recent name="$PROJECT_DIR$/examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run 8_2_limiting_the_number_of_child_rays">
-    <configuration name="Run 5_2_creating_or_first_raytraced_image" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 5_2_creating_or_first_raytraced_image" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Cargo.Run 9_3_modeling_light_scatter_and_reflectance">
     <configuration name="Run 6_1_shading_with_surface_normals" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --example 6_1_shading_with_surface_normals" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -131,6 +122,20 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Run 9_3_modeling_light_scatter_and_reflectance" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 9_3_modeling_light_scatter_and_reflectance" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --bin ray-tracing-in-one-week-rust" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -165,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Run 9_3_modeling_light_scatter_and_reflectance" />
         <item itemvalue="Cargo.Run 8_2_limiting_the_number_of_child_rays" />
         <item itemvalue="Cargo.Run 8_1_a_simple_diffuse_material" />
         <item itemvalue="Cargo.Run 7_2_generating_pixels_with_multiple_samples" />
         <item itemvalue="Cargo.Run 6_1_shading_with_surface_normals" />
-        <item itemvalue="Cargo.Run 5_2_creating_or_first_raytraced_image" />
       </list>
     </recent_temporary>
   </component>
@@ -186,7 +191,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="20813000" />
+      <workItem from="1615008528283" duration="22103000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -384,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615038815122</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="refactoring Vector3">
+      <created>1615040595887</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1615040595887</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,7 +437,8 @@
     <MESSAGE value="8.1. An Abstract Class(trait) for Materials" />
     <MESSAGE value="9.2. A Data Structure to Describe Ray-Object Intersections" />
     <MESSAGE value="9.3. Modeling Light Scatter and Reflectance" />
-    <option name="LAST_COMMIT_MESSAGE" value="9.3. Modeling Light Scatter and Reflectance" />
+    <MESSAGE value="refactoring Vector3" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring Vector3" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

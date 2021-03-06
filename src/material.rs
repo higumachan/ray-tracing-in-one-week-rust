@@ -5,8 +5,8 @@ use std::fmt::Debug;
 
 #[derive(Debug, Clone)]
 pub struct ScatterResult {
-    attenuation: Color,
-    scattered: Ray,
+    pub attenuation: Color,
+    pub scattered: Ray,
 }
 
 impl ScatterResult {

@@ -71,6 +71,11 @@ impl Vector3 {
         Self::new_from_iter(self.elements.iter().map(|x| f64::sqrt(*x)))
     }
 
+    pub fn reflect(&self, normal: &Self) -> Self {
+        let l = normal * (2.0 * self.dot(normal));
+        self - &l
+    }
+
     pub fn unit_vector(&self) -> Self {
         self / self.length()
     }
@@ -108,6 +113,10 @@ impl Vector3 {
 
     pub fn approx_zero(&self) -> bool {
         self.elements.iter().all(|x| x.abs() < EPS)
+    }
+
+    pub fn hadamard_product(&self, rhs: &Self) -> Self {
+        Self::new_from_iter(self.zip_elements(rhs).map(|(a, b)| a * b))
     }
 
     fn new_from_iter<I: Iterator<Item = f64>>(mut iter: I) -> Self {

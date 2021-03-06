@@ -3,13 +3,23 @@ use crate::material::{Material, ScatterResult};
 use crate::ray::Ray;
 use crate::vector3::{Color, Vector3};
 use rand::rngs::ThreadRng;
+use rand::thread_rng;
 use std::cell::RefCell;
 use std::ops::DerefMut;
 
 #[derive(Debug)]
-struct Lambertian {
+pub struct Lambertian {
     albedo: Color,
     rng: RefCell<ThreadRng>,
+}
+
+impl Lambertian {
+    pub fn new(albedo: Color) -> Self {
+        Lambertian {
+            albedo,
+            rng: RefCell::new(thread_rng()),
+        }
+    }
 }
 
 impl Material for Lambertian {

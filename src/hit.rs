@@ -25,6 +25,9 @@ impl HitRecord {
     pub fn front_face(&self) -> bool {
         self.front_face
     }
+    pub fn material(&self) -> &Rc<dyn Material> {
+        &self.material
+    }
 }
 
 impl HitRecord {
