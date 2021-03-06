@@ -9,10 +9,10 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="5.2. Creating Or First Rayraced Image">
-      <change afterPath="$PROJECT_DIR$/examples/6_1_shading_with_surface_normals.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="6.1. Shading with Surface Normals">
+      <change afterPath="$PROJECT_DIR$/examples/6_2_simplifying_the_ray-shphere_intersection_code.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/6_1_shading_with_surface_normals.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/6_1_shading_with_surface_normals.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="6316000" />
+      <workItem from="1615008528283" duration="6947000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -252,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615014337110</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="6.1. Shading with Surface Normals">
+      <created>1615014886744</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1615014886744</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,7 +285,8 @@
     <MESSAGE value="4.1. The ray Class" />
     <MESSAGE value="4.2. Sending Rays Into the Scene" />
     <MESSAGE value="5.2. Creating Or First Rayraced Image" />
-    <option name="LAST_COMMIT_MESSAGE" value="5.2. Creating Or First Rayraced Image" />
+    <MESSAGE value="6.1. Shading with Surface Normals" />
+    <option name="LAST_COMMIT_MESSAGE" value="6.1. Shading with Surface Normals" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -17,11 +17,11 @@ fn ray_color(ray: &Ray) -> Color {
 fn hit_sphere(center: &Point3, radius: f64, ray: &Ray) -> Option<f64> {
     let oc = ray.origin() - center;
     let a = ray.direction().length_squared();
-    let b = 2.0 * oc.dot(ray.direction());
+    let half_b = oc.dot(ray.direction());
     let c = oc.length_squared() - radius.powi(2);
-    let discriminant = b.powi(2) - 4.0 * a * c;
+    let discriminant = half_b.powi(2) - a * c;
 
-    (discriminant >= 0.0).then(|| (-b - discriminant.sqrt()) / (2.0 * a))
+    (discriminant >= 0.0).then(|| (-half_b - discriminant.sqrt()) / a)
 }
 
 fn main() {
