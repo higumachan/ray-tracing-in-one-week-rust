@@ -9,10 +9,9 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="8.2. Limiting the Number of Child Rays">
-      <change afterPath="$PROJECT_DIR$/examples/8_3_using_gamma_correction_for_accurate_color_intensity.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="8.3. Using Gamma Correction for Accurate Color Intensity">
+      <change afterPath="$PROJECT_DIR$/examples/8_4_fixing_shadow_acne.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +186,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="15472000" />
+      <workItem from="1615008528283" duration="15672000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -336,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615034857324</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="8.3. Using Gamma Correction for Accurate Color Intensity">
+      <created>1615035292916</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1615035292916</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,7 +377,8 @@
     <MESSAGE value="7.2 Generating Pixels with Multiple Samples" />
     <MESSAGE value="8.1. A Simple Diffuse Material" />
     <MESSAGE value="8.2. Limiting the Number of Child Rays" />
-    <option name="LAST_COMMIT_MESSAGE" value="8.2. Limiting the Number of Child Rays" />
+    <MESSAGE value="8.3. Using Gamma Correction for Accurate Color Intensity" />
+    <option name="LAST_COMMIT_MESSAGE" value="8.3. Using Gamma Correction for Accurate Color Intensity" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
