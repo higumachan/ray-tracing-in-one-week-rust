@@ -1,7 +1,9 @@
 use crate::to_pixel_value;
+use rand::rngs::ThreadRng;
+use rand::Rng;
 use std::fmt::{Display, Formatter};
 use std::iter::Sum;
-use std::ops::{Add, AddAssign, Div, Mul, MulAssign, Neg, Sub, SubAssign};
+use std::ops::{Add, AddAssign, Div, Mul, MulAssign, Neg, Range, Sub, SubAssign};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Vector3 {
@@ -61,6 +63,33 @@ impl Vector3 {
 
     pub fn unit_vector(&self) -> Self {
         self / self.length()
+    }
+
+    pub fn random(rng: &mut ThreadRng) -> Self {
+        Vector3::new(rng.gen(), rng.gen(), rng.gen())
+    }
+
+    pub fn random_range(rng: &mut ThreadRng, range: Range<f64>) -> Self {
+        Vector3::new(
+            rng.gen_range(range.clone()),
+            rng.gen_range(range.clone()),
+            rng.gen_range(range),
+        )
+    }
+
+    pub fn random_in_unit_sphere(rng: &mut ThreadRng) -> Self {
+        loop {
+            let p = Self::random_range(
+                rng,
+                Range {
+                    start: -1.0,
+                    end: 1.0,
+                },
+            );
+            if p.length_squared() < 1.0 {
+                return p;
+            }
+        }
     }
 }
 
@@ -300,6 +329,9 @@ impl Color {
     }
     pub fn white() -> Self {
         Self::new(1.0, 1.0, 1.0)
+    }
+    pub fn black() -> Self {
+        Self::new(0.0, 0.0, 0.0)
     }
 }
 
