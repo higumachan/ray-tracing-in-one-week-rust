@@ -13,6 +13,15 @@ impl Vector3 {
     pub fn new(x: f64, y: f64, z: f64) -> Self {
         Vector3 { x, y, z }
     }
+    pub fn new_x(x: f64) -> Self {
+        Self::new(x, 0.0, 0.0)
+    }
+    pub fn new_y(y: f64) -> Self {
+        Self::new(0.0, y, 0.0)
+    }
+    pub fn new_z(z: f64) -> Self {
+        Self::new(0.0, 0.0, z)
+    }
     pub fn x(&self) -> f64 {
         self.x
     }
@@ -131,6 +140,12 @@ impl From<Point3> for Vector3 {
     }
 }
 
+impl<'a> From<&'a Point3> for &'a Vector3 {
+    fn from(p: &'a Point3) -> Self {
+        &p.0
+    }
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub struct Point3(Vector3);
 
@@ -143,6 +158,9 @@ impl From<Vector3> for Point3 {
 impl Point3 {
     pub fn new(x: f64, y: f64, z: f64) -> Self {
         Self(Vector3 { x, y, z })
+    }
+    pub fn zero() -> Self {
+        Self::new(0.0, 0.0, 0.0)
     }
     pub fn x(&self) -> f64 {
         self.0.x
@@ -176,6 +194,22 @@ impl Add<&Vector3> for &Point3 {
 
     fn add(self, rhs: &Vector3) -> Self::Output {
         Self::Output::new(self.x() + rhs.x(), self.y() + rhs.y(), self.z() + rhs.z())
+    }
+}
+
+impl Sub<Vector3> for Point3 {
+    type Output = Point3;
+
+    fn sub(self, rhs: Vector3) -> Self::Output {
+        (&self).sub(&rhs)
+    }
+}
+
+impl Sub<&Vector3> for &Point3 {
+    type Output = Point3;
+
+    fn sub(self, rhs: &Vector3) -> Self::Output {
+        Self::Output::new(self.x() - rhs.x(), self.y() - rhs.y(), self.z() - rhs.z())
     }
 }
 
