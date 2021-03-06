@@ -9,10 +9,11 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="6.1. Shading with Surface Normals">
-      <change afterPath="$PROJECT_DIR$/examples/6_2_simplifying_the_ray-shphere_intersection_code.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="6.2. Simplifying the Ray-Sphere Intersection Code">
+      <change afterPath="$PROJECT_DIR$/src/hit.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sphere.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/6_1_shading_with_surface_normals.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/6_1_shading_with_surface_normals.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +188,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="6947000" />
+      <workItem from="1615008528283" duration="7608000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -259,7 +260,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615014886744</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="6.2. Simplifying the Ray-Sphere Intersection Code">
+      <created>1615015514912</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1615015514912</updated>
+    </task>
+    <task id="LOCAL-00012" summary="6.2. Simplifying the Ray-Sphere Intersection Code">
+      <created>1615015520266</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1615015520266</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +301,8 @@
     <MESSAGE value="4.2. Sending Rays Into the Scene" />
     <MESSAGE value="5.2. Creating Or First Rayraced Image" />
     <MESSAGE value="6.1. Shading with Surface Normals" />
-    <option name="LAST_COMMIT_MESSAGE" value="6.1. Shading with Surface Normals" />
+    <MESSAGE value="6.2. Simplifying the Ray-Sphere Intersection Code" />
+    <option name="LAST_COMMIT_MESSAGE" value="6.2. Simplifying the Ray-Sphere Intersection Code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

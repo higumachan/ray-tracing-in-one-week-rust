@@ -1,4 +1,6 @@
+pub mod hit;
 pub mod ray;
+pub mod sphere;
 pub mod vector3;
 
 pub fn to_pixel_value(c: f64) -> u8 {
