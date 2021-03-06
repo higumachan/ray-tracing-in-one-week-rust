@@ -26,7 +26,7 @@ impl Hit for Sphere {
         }
 
         let p = ray.at(root);
-        let normal = (&p - &self.center) / self.radius;
-        Some(HitRecord::new(p, normal, root))
+        let outward_normal = (&p - &self.center) / self.radius;
+        Some(HitRecord::new(p, root, outward_normal, ray))
     }
 }

@@ -1,6 +1,6 @@
 use crate::to_pixel_value;
 use std::fmt::{Display, Formatter};
-use std::ops::{Add, AddAssign, Div, Mul, MulAssign, Sub, SubAssign};
+use std::ops::{Add, AddAssign, Div, Mul, MulAssign, Neg, Sub, SubAssign};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Vector3 {
@@ -57,6 +57,14 @@ impl Vector3 {
 
     pub fn unit_vector(&self) -> Self {
         self / self.length()
+    }
+}
+
+impl Neg for Vector3 {
+    type Output = Self;
+
+    fn neg(self) -> Self::Output {
+        Self::new(-self.x, -self.y, -self.z)
     }
 }
 
