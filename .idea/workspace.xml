@@ -9,10 +9,9 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="4.1. The ray Class">
-      <change afterPath="$PROJECT_DIR$/examples/4_2_sending_rays_into_the_scene.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="4.2. Sending Rays Into the Scene">
+      <change afterPath="$PROJECT_DIR$/examples/5_2_creating_or_first_raytraced_image.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,21 +61,7 @@
       <recent name="$PROJECT_DIR$/examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run 4_2_sending_rays_into_the_scene">
-    <configuration name="Run 2_1_the_ppm_image_format" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 2_1_the_ppm_image_format" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Cargo.Run 5_2_creating_or_first_raytraced_image">
     <configuration name="Run 2_3_adding_a_progress_indicator" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --example 2_3_adding_a_progress_indicator" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -107,6 +92,20 @@
     </configuration>
     <configuration name="Run 4_2_sending_rays_into_the_scene" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --example 4_2_sending_rays_into_the_scene" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run 5_2_creating_or_first_raytraced_image" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 5_2_creating_or_first_raytraced_image" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="allFeatures" value="false" />
@@ -167,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Run 5_2_creating_or_first_raytraced_image" />
         <item itemvalue="Cargo.Run 4_2_sending_rays_into_the_scene" />
         <item itemvalue="Cargo.Run 3_3_color_utility_functions" />
         <item itemvalue="Cargo.Test vector3::tests" />
         <item itemvalue="Cargo.Run 2_3_adding_a_progress_indicator" />
-        <item itemvalue="Cargo.Run 2_1_the_ppm_image_format" />
       </list>
     </recent_temporary>
   </component>
@@ -188,7 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="4981000" />
+      <workItem from="1615008528283" duration="5756000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -239,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615012093184</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="4.2. Sending Rays Into the Scene">
+      <created>1615013595537</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1615013595537</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +269,8 @@
     <MESSAGE value="3.2. vec3 Utility Functions" />
     <MESSAGE value="3.3. Color Utility Functions" />
     <MESSAGE value="4.1. The ray Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="4.1. The ray Class" />
+    <MESSAGE value="4.2. Sending Rays Into the Scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="4.2. Sending Rays Into the Scene" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

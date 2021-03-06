@@ -32,19 +32,19 @@ impl Vector3 {
         self.z
     }
 
-    fn length_squared(&self) -> f64 {
+    pub fn length_squared(&self) -> f64 {
         self.dot(self)
     }
 
-    fn length(&self) -> f64 {
+    pub fn length(&self) -> f64 {
         self.length_squared().sqrt()
     }
 
-    fn dot(&self, rhs: &Self) -> f64 {
+    pub fn dot(&self, rhs: &Self) -> f64 {
         self.x * rhs.x + self.y * rhs.y + self.z * rhs.z
     }
 
-    fn cross(&self, rhs: &Self) -> Self {
+    pub fn cross(&self, rhs: &Self) -> Self {
         Self::new(
             self.y * rhs.z - self.z * rhs.y,
             self.z * rhs.x - self.x * rhs.z,
@@ -97,11 +97,27 @@ impl Mul<f64> for &Vector3 {
     }
 }
 
+impl Mul<f64> for Vector3 {
+    type Output = Vector3;
+
+    fn mul(self, rhs: f64) -> Self::Output {
+        (&self).mul(rhs)
+    }
+}
+
 impl Div<f64> for &Vector3 {
     type Output = Vector3;
 
     fn div(self, rhs: f64) -> Self::Output {
         Vector3::new(self.x / rhs, self.y / rhs, self.z / rhs)
+    }
+}
+
+impl Div<f64> for Vector3 {
+    type Output = Vector3;
+
+    fn div(self, rhs: f64) -> Self::Output {
+        (&self).div(rhs)
     }
 }
 
@@ -171,6 +187,16 @@ impl Point3 {
     pub fn z(&self) -> f64 {
         self.0.z
     }
+
+    pub fn new_x(x: f64) -> Self {
+        Self::new(x, 0.0, 0.0)
+    }
+    pub fn new_y(y: f64) -> Self {
+        Self::new(0.0, y, 0.0)
+    }
+    pub fn new_z(z: f64) -> Self {
+        Self::new(0.0, 0.0, z)
+    }
 }
 
 impl Add<Vector3> for Point3 {
@@ -213,6 +239,14 @@ impl Sub<&Vector3> for &Point3 {
     }
 }
 
+impl Sub<&Point3> for &Point3 {
+    type Output = Vector3;
+
+    fn sub(self, rhs: &Point3) -> Self::Output {
+        Self::Output::new(self.x() - rhs.x(), self.y() - rhs.y(), self.z() - rhs.z())
+    }
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub struct Color(Vector3);
 
@@ -234,6 +268,10 @@ impl Color {
     }
     pub fn b(&self) -> f64 {
         self.0.z
+    }
+
+    pub fn red() -> Self {
+        Self::new(1.0, 0.0, 0.0)
     }
 }
 
