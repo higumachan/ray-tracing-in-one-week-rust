@@ -355,6 +355,10 @@ impl Color {
     pub fn new(r: f64, g: f64, b: f64) -> Self {
         Self(Vector3::new(r, g, b))
     }
+    pub fn new_all(c: f64) -> Self {
+        Self::new(c, c, c)
+    }
+
     pub fn r(&self) -> f64 {
         self.0.x()
     }
