@@ -13,6 +13,9 @@ impl Vector3 {
     pub fn new(x: f64, y: f64, z: f64) -> Self {
         Vector3 { x, y, z }
     }
+    pub fn one() -> Self {
+        Self::new(1.0, 1.0, 1.0)
+    }
     pub fn new_x(x: f64) -> Self {
         Self::new(x, 0.0, 0.0)
     }
@@ -211,7 +214,7 @@ impl Add<Vector3> for &Point3 {
     type Output = Point3;
 
     fn add(self, rhs: Vector3) -> Self::Output {
-        (&self).add(rhs)
+        (&self).add(&rhs)
     }
 }
 

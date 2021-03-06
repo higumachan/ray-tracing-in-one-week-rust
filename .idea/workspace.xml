@@ -9,8 +9,8 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="4.2. Sending Rays Into the Scene">
-      <change afterPath="$PROJECT_DIR$/examples/5_2_creating_or_first_raytraced_image.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="5.2. Creating Or First Rayraced Image">
+      <change afterPath="$PROJECT_DIR$/examples/6_1_shading_with_surface_normals.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
     </list>
@@ -61,21 +61,7 @@
       <recent name="$PROJECT_DIR$/examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run 5_2_creating_or_first_raytraced_image">
-    <configuration name="Run 2_3_adding_a_progress_indicator" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 2_3_adding_a_progress_indicator" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Cargo.Run 6_1_shading_with_surface_normals">
     <configuration name="Run 3_3_color_utility_functions" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --example 3_3_color_utility_functions" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -106,6 +92,20 @@
     </configuration>
     <configuration name="Run 5_2_creating_or_first_raytraced_image" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --example 5_2_creating_or_first_raytraced_image" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run 6_1_shading_with_surface_normals" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 6_1_shading_with_surface_normals" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="allFeatures" value="false" />
@@ -166,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Run 6_1_shading_with_surface_normals" />
         <item itemvalue="Cargo.Run 5_2_creating_or_first_raytraced_image" />
         <item itemvalue="Cargo.Run 4_2_sending_rays_into_the_scene" />
         <item itemvalue="Cargo.Run 3_3_color_utility_functions" />
         <item itemvalue="Cargo.Test vector3::tests" />
-        <item itemvalue="Cargo.Run 2_3_adding_a_progress_indicator" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="5756000" />
+      <workItem from="1615008528283" duration="6316000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -245,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615013595537</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="5.2. Creating Or First Rayraced Image">
+      <created>1615014337110</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1615014337110</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +277,8 @@
     <MESSAGE value="3.3. Color Utility Functions" />
     <MESSAGE value="4.1. The ray Class" />
     <MESSAGE value="4.2. Sending Rays Into the Scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="4.2. Sending Rays Into the Scene" />
+    <MESSAGE value="5.2. Creating Or First Rayraced Image" />
+    <option name="LAST_COMMIT_MESSAGE" value="5.2. Creating Or First Rayraced Image" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
