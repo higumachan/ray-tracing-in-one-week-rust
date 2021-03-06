@@ -20,6 +20,14 @@ impl Vector3 {
     pub fn z(&self) -> f64 {
         self.z
     }
+
+    fn length_squared(&self) -> f64 {
+        self.x.powi(2) + self.y.powi(2) + self.z.powi(2)
+    }
+
+    fn length(&self) -> f64 {
+        self.length_squared().sqrt()
+    }
 }
 
 impl Add for Vector3 {
