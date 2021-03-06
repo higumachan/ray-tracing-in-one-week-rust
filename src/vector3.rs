@@ -1,4 +1,4 @@
-use std::ops::{Add, AddAssign, Mul, MulAssign, Sub, SubAssign};
+use std::ops::{Add, AddAssign, Div, Mul, MulAssign, Sub, SubAssign};
 
 #[derive(Debug, Clone, PartialEq)]
 struct Vector3 {
@@ -22,11 +22,27 @@ impl Vector3 {
     }
 
     fn length_squared(&self) -> f64 {
-        self.x.powi(2) + self.y.powi(2) + self.z.powi(2)
+        self.dot(self)
     }
 
     fn length(&self) -> f64 {
         self.length_squared().sqrt()
+    }
+
+    fn dot(&self, rhs: &Self) -> f64 {
+        self.x * rhs.x + self.y * rhs.y + self.z * rhs.z
+    }
+
+    fn cross(&self, rhs: &Self) -> Self {
+        Self::new(
+            self.y * rhs.z - self.z * rhs.y,
+            self.z * rhs.x - self.x * rhs.z,
+            self.x * rhs.y - self.y * rhs.x,
+        )
+    }
+
+    pub fn unit_vector(&self) -> Self {
+        self / self.length()
     }
 }
 
@@ -59,6 +75,22 @@ impl Sub for &Vector3 {
 
     fn sub(self, rhs: Self) -> Self::Output {
         Self::Output::new(self.x - rhs.x, self.y - rhs.y, self.z - rhs.z)
+    }
+}
+
+impl Mul<f64> for &Vector3 {
+    type Output = Vector3;
+
+    fn mul(self, rhs: f64) -> Self::Output {
+        Vector3::new(self.x * rhs, self.y * rhs, self.z * rhs)
+    }
+}
+
+impl Div<f64> for &Vector3 {
+    type Output = Vector3;
+
+    fn div(self, rhs: f64) -> Self::Output {
+        Vector3::new(self.x / rhs, self.y / rhs, self.z / rhs)
     }
 }
 
@@ -155,5 +187,16 @@ mod tests {
         let v2 = Vector3::new(0.0, 1.0, 0.0);
 
         assert_eq!(v1 + v2, Vector3::new(1.0, 1.0, 0.0))
+    }
+
+    #[test]
+    fn cross_dot() {
+        let v1 = Vector3::new(1.0, 0.0, 0.0);
+        let v2 = Vector3::new(0.0, 1.0, 0.0);
+
+        assert_eq!(v1.dot(&v2), 0.0);
+        let v3 = v1.cross(&v2);
+        assert_eq!(v1.dot(&v3), 0.0);
+        assert_eq!(v2.dot(&v3), 0.0);
     }
 }
