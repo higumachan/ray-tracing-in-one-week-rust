@@ -9,9 +9,10 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="8.3. Using Gamma Correction for Accurate Color Intensity">
-      <change afterPath="$PROJECT_DIR$/examples/8_4_fixing_shadow_acne.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="8.4. Fixing Shadow Acne">
+      <change afterPath="$PROJECT_DIR$/examples/8_5_true_lambertian_reflection.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="15672000" />
+      <workItem from="1615008528283" duration="15940000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -342,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615035292916</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="8.4. Fixing Shadow Acne">
+      <created>1615035487731</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1615035487731</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +386,8 @@
     <MESSAGE value="8.1. A Simple Diffuse Material" />
     <MESSAGE value="8.2. Limiting the Number of Child Rays" />
     <MESSAGE value="8.3. Using Gamma Correction for Accurate Color Intensity" />
-    <option name="LAST_COMMIT_MESSAGE" value="8.3. Using Gamma Correction for Accurate Color Intensity" />
+    <MESSAGE value="8.4. Fixing Shadow Acne" />
+    <option name="LAST_COMMIT_MESSAGE" value="8.4. Fixing Shadow Acne" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

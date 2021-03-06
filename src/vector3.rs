@@ -95,6 +95,10 @@ impl Vector3 {
             }
         }
     }
+
+    pub fn random_unit_vector(rng: &mut ThreadRng) -> Self {
+        Self::random_in_unit_sphere(rng).unit_vector()
+    }
 }
 
 impl Neg for Vector3 {
