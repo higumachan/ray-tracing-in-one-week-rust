@@ -1,0 +1,1 @@
+cargo  run --release --example $1 > assets/result/$1.ppm
