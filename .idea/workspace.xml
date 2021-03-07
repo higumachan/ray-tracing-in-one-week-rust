@@ -9,14 +9,11 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="10.3.Total Internal Reflection">
-      <change afterPath="$PROJECT_DIR$/examples/10_5_total_internal_reflection.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="10.5.Modeling a Hollow Glass Sphere">
+      <change afterPath="$PROJECT_DIR$/examples/11_1_camera_viewing_geometry.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/10_3_total_internal_reflection.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/10_3_total_internal_reflection.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/material/dielectric.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material/dielectric.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/material/lambertian.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material/lambertian.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/material/material.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material/material.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/material/metal.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material/metal.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +66,7 @@
       <recent name="$PROJECT_DIR$/src/material" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run 10_5_total_internal_reflection">
+  <component name="RunManager" selected="Cargo.Run 11_1_camera_viewing_geometry">
     <configuration name="Run 10_2_snells_law" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --example 10_2_snells_law" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -112,8 +109,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Run 5_2_creating_or_first_raytraced_image" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 5_2_creating_or_first_raytraced_image" />
+    <configuration name="Run 11_1_camera_viewing_geometry" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 11_1_camera_viewing_geometry" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="allFeatures" value="false" />
@@ -126,8 +123,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Run 9_6_fuzzy_reflection" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 9_6_fuzzy_reflection" />
+    <configuration name="Run 5_2_creating_or_first_raytraced_image" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 5_2_creating_or_first_raytraced_image" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="allFeatures" value="false" />
@@ -174,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Run 11_1_camera_viewing_geometry" />
         <item itemvalue="Cargo.Run 10_5_total_internal_reflection" />
         <item itemvalue="Cargo.Run 10_3_total_internal_reflection" />
         <item itemvalue="Cargo.Run 10_2_snells_law" />
         <item itemvalue="Cargo.Run 5_2_creating_or_first_raytraced_image" />
-        <item itemvalue="Cargo.Run 9_6_fuzzy_reflection" />
       </list>
     </recent_temporary>
   </component>
@@ -195,7 +192,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="31223000" />
+      <workItem from="1615008528283" duration="32777000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -456,7 +453,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615097509720</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="10.5.Modeling a Hollow Glass Sphere">
+      <created>1615098248614</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1615098248614</updated>
+    </task>
+    <task id="LOCAL-00039" summary="10.5.Modeling a Hollow Glass Sphere">
+      <created>1615098254562</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1615098254562</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +485,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="4.1. The ray Class" />
     <MESSAGE value="4.2. Sending Rays Into the Scene" />
     <MESSAGE value="5.2. Creating Or First Rayraced Image" />
     <MESSAGE value="6.1. Shading with Surface Normals" />
@@ -499,7 +509,8 @@
     <MESSAGE value="10.2. Snell's Law" />
     <MESSAGE value="refactor" />
     <MESSAGE value="10.3.Total Internal Reflection" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.3.Total Internal Reflection" />
+    <MESSAGE value="10.5.Modeling a Hollow Glass Sphere" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.5.Modeling a Hollow Glass Sphere" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
