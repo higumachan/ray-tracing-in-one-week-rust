@@ -72,6 +72,11 @@ fn main() {
     world.add(Box::new(Sphere::new(
         Point3::new(-1.0, 0.0, -1.0),
         0.5,
+        material_left.clone(),
+    )));
+    world.add(Box::new(Sphere::new(
+        Point3::new(-1.0, 0.0, -1.0),
+        -0.4,
         material_left,
     )));
     world.add(Box::new(Sphere::new(

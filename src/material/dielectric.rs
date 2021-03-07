@@ -2,6 +2,7 @@ use crate::hit::HitRecord;
 use crate::material::material::{Material, ScatterResult};
 use crate::ray::Ray;
 use crate::vector3::{Color, Vector3};
+use rand::rngs::ThreadRng;
 use rand::{Rng, RngCore};
 
 #[derive(Debug, Clone)]
@@ -18,9 +19,9 @@ impl Dielectric {
 }
 
 impl Material for Dielectric {
-    fn scatter<R: RngCore>(
+    fn scatter(
         &self,
-        rng: &mut R,
+        rng: &mut ThreadRng,
         input: &Ray,
         record: &HitRecord,
     ) -> Option<ScatterResult> {
@@ -51,5 +52,5 @@ impl Material for Dielectric {
 
 fn reflectance(cos: f64, ref_idx: f64) -> f64 {
     let r0 = ((1.0 - ref_idx) / (1.0 + ref_idx)).powi(2);
-    r0 + (1 - r0) * (1 - cos).powi(5)
+    r0 + (1.0 - r0) * (1.0 - cos).powi(5)
 }

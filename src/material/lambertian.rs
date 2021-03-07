@@ -19,9 +19,9 @@ impl Lambertian {
 }
 
 impl Material for Lambertian {
-    fn scatter<R: RngCore>(
+    fn scatter(
         &self,
-        rng: &mut R,
+        rng: &mut ThreadRng,
         input: &Ray,
         record: &HitRecord,
     ) -> Option<ScatterResult> {

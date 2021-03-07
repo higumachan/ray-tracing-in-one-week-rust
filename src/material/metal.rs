@@ -23,9 +23,9 @@ impl Metal {
 }
 
 impl Material for Metal {
-    fn scatter<R: RngCore>(
+    fn scatter(
         &self,
-        rng: &mut R,
+        rng: &mut ThreadRng,
         input: &Ray,
         record: &HitRecord,
     ) -> Option<ScatterResult> {
