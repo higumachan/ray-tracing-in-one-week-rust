@@ -2,12 +2,13 @@ use crate::material::material::Material;
 use crate::ray::Ray;
 use crate::vector3::{Point3, Vector3};
 use std::rc::Rc;
+use std::sync::Arc;
 
 #[derive(Debug, Clone)]
 pub struct HitRecord {
     point: Point3,
     normal: Vector3,
-    material: Rc<dyn Material>,
+    material: Arc<dyn Material>,
     t: f64,
     front_face: bool,
 }
@@ -25,7 +26,7 @@ impl HitRecord {
     pub fn front_face(&self) -> bool {
         self.front_face
     }
-    pub fn material(&self) -> &Rc<dyn Material> {
+    pub fn material(&self) -> &Arc<dyn Material> {
         &self.material
     }
 }
@@ -36,7 +37,7 @@ impl HitRecord {
         t: f64,
         outward_normal: Vector3,
         ray: &Ray,
-        material: Rc<dyn Material>,
+        material: Arc<dyn Material>,
     ) -> Self {
         let front_face = ray.direction().dot(&outward_normal) < 0.0;
         let normal = if front_face {
@@ -54,6 +55,6 @@ impl HitRecord {
     }
 }
 
-pub trait Hit {
+pub trait Hit: Sync + Send {
     fn hit(&self, ray: &Ray, t_min: f64, t_max: f64) -> Option<HitRecord>;
 }

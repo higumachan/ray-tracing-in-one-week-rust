@@ -9,11 +9,15 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="12.2. Generating Sample Rays">
-      <change afterPath="$PROJECT_DIR$/examples/13_1_a_final_render.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="13.1. A Final Render">
+      <change afterPath="$PROJECT_DIR$/examples/14_1_parallel.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/result/12_2_generating_sample_rays.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/assets/result/12_2_generating_sample_rays.ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/result/13_1_a_final_render.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/assets/result/13_1_a_final_render.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hit.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/hit.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/material/material.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material/material.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sphere.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sphere.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,21 +70,7 @@
       <recent name="$PROJECT_DIR$/src/material" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run 13_1_a_final_render">
-    <configuration name="Run 10_5_total_internal_reflection" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 10_5_total_internal_reflection" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Cargo.Run 14_1_parallel">
     <configuration name="Run 11_1_camera_viewing_geometry" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --example 11_1_camera_viewing_geometry" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -137,6 +127,20 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Run 14_1_parallel" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 14_1_parallel" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --bin ray-tracing-in-one-week-rust" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -171,11 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Run 14_1_parallel" />
         <item itemvalue="Cargo.Run 13_1_a_final_render" />
         <item itemvalue="Cargo.Run 12_2_generating_sample_rays" />
         <item itemvalue="Cargo.Run 11_2_positioning_and_orienting_the_camera" />
         <item itemvalue="Cargo.Run 11_1_camera_viewing_geometry" />
-        <item itemvalue="Cargo.Run 10_5_total_internal_reflection" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +196,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="37747000" />
+      <workItem from="1615008528283" duration="39568000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -488,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615104401012</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="13.1. A Final Render">
+      <created>1615112695648</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1615112695648</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +517,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="6.2. Simplifying the Ray-Sphere Intersection Code" />
     <MESSAGE value="6.3. An Abstraction for Hittable Objects" />
     <MESSAGE value="6.4. Front Faces Versus Back Faces" />
     <MESSAGE value="6.5. A List of Hittable Objects" />
@@ -531,7 +541,8 @@
     <MESSAGE value="11.1. Camera Viewing Geometry" />
     <MESSAGE value="11.2. Positioning and Orienting the Camera" />
     <MESSAGE value="12.2. Generating Sample Rays" />
-    <option name="LAST_COMMIT_MESSAGE" value="12.2. Generating Sample Rays" />
+    <MESSAGE value="13.1. A Final Render" />
+    <option name="LAST_COMMIT_MESSAGE" value="13.1. A Final Render" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

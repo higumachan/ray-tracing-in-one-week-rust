@@ -20,7 +20,7 @@ impl ScatterResult {
     }
 }
 
-pub trait Material: Debug {
+pub trait Material: Debug + Send + Sync {
     fn scatter(
         &self,
         rng: &mut ThreadRng,
