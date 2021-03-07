@@ -391,6 +391,14 @@ impl Color {
         self.0.z()
     }
 
+    pub fn random(rng: &mut ThreadRng) -> Self {
+        Self(Vector3::random(rng))
+    }
+
+    pub fn random_range(rng: &mut ThreadRng, range: Range<f64>) -> Self {
+        Self(Vector3::random_range(rng, range))
+    }
+
     pub fn red() -> Self {
         Self::new(1.0, 0.0, 0.0)
     }
