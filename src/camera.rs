@@ -22,8 +22,6 @@ impl Camera {
         let viewport_height = 2.0 * h;
         let viewport_width = aspect_ratio * viewport_height;
 
-        let focal_length = 1.0;
-
         let w = (&look_from - &look_at).unit_vector();
         let u = up_vector.cross(&w).unit_vector();
         let v = w.cross(&u);
@@ -41,9 +39,9 @@ impl Camera {
         }
     }
 
-    pub fn ray(&self, u: f64, v: f64) -> Ray {
-        let hv = &self.horizontal * u;
-        let vv = &self.vertical * v;
+    pub fn ray(&self, s: f64, t: f64) -> Ray {
+        let hv = &self.horizontal * s;
+        let vv = &self.vertical * t;
         Ray::new(
             self.origin.clone(),
             &Vector3::from(self.lower_left_corner.clone()) + &hv + vv
@@ -54,6 +52,12 @@ impl Camera {
 
 impl Default for Camera {
     fn default() -> Self {
-        Self::new(2.0, 16.0 / 9.0)
+        Self::new(
+            Point3::zero(),
+            Point3::new_z(-1.0),
+            Vector3::new_y(1.0),
+            2.0,
+            16.0 / 9.0,
+        )
     }
 }
