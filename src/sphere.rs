@@ -1,5 +1,5 @@
 use crate::hit::{Hit, HitRecord};
-use crate::material::Material;
+use crate::material::material::Material;
 use crate::ray::Ray;
 use crate::vector3::Point3;
 use std::rc::Rc;

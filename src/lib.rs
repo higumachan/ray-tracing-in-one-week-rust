@@ -1,12 +1,9 @@
 use std::f64::consts::PI;
 
 pub mod camera;
-pub mod dielectric;
 pub mod hit;
 pub mod hit_objects;
-pub mod lambertian;
 pub mod material;
-pub mod metal;
 pub mod ray;
 pub mod sphere;
 pub mod vector3;

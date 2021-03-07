@@ -9,14 +9,20 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="9.6. Fuzzy Reflection">
-      <change afterPath="$PROJECT_DIR$/examples/10_2_snells_law.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dielectric.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="10.2. Snell's Law">
+      <change afterPath="$PROJECT_DIR$/examples/10_3_total_internal_reflection.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/material/material.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/material/mod.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/result/9_6_fuzzy_reflection.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/assets/result/9_6_fuzzy_reflection.ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/9_6_fuzzy_reflection.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/9_6_fuzzy_reflection.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/result/10_2_snells_law.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/assets/result/10_2_snells_law.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/10_2_snells_law.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/10_2_snells_law.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dielectric.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material/dielectric.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hit.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/hit.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lambertian.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material/lambertian.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/material.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/metal.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material/metal.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sphere.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sphere.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/examples" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/material" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -59,13 +65,17 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
     <property name="settings.editor.selected.configurable" value="language.rust.rustfmt" />
+    <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/src/material" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/examples" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/material" />
+    </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run 5_2_creating_or_first_raytraced_image">
+  <component name="RunManager" selected="Cargo.Run 10_3_total_internal_reflection">
     <configuration name="Run 10_2_snells_law" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --example 10_2_snells_law" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -80,8 +90,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Run 5_2_creating_or_first_raytraced_image" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 5_2_creating_or_first_raytraced_image" />
+    <configuration name="Run 10_3_total_internal_reflection" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 10_3_total_internal_reflection" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="allFeatures" value="false" />
@@ -94,8 +104,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Run 9_3_modeling_light_scatter_and_reflectance" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 9_3_modeling_light_scatter_and_reflectance" />
+    <configuration name="Run 5_2_creating_or_first_raytraced_image" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 5_2_creating_or_first_raytraced_image" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="allFeatures" value="false" />
@@ -170,11 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Run 10_3_total_internal_reflection" />
+        <item itemvalue="Cargo.Run 10_2_snells_law" />
         <item itemvalue="Cargo.Run 5_2_creating_or_first_raytraced_image" />
         <item itemvalue="Cargo.Run 9_6_fuzzy_reflection" />
-        <item itemvalue="Cargo.Run 10_2_snells_law" />
         <item itemvalue="Cargo.Run 9_5_a_scene_with_metal_spheres" />
-        <item itemvalue="Cargo.Run 9_3_modeling_light_scatter_and_reflectance" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +201,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="28932000" />
+      <workItem from="1615008528283" duration="29718000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -431,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615091294598</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="10.2. Snell's Law">
+      <created>1615096183537</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1615096183537</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,7 +466,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="3.1. Variables and Methods" />
     <MESSAGE value="3.2. vec3 Utility Functions" />
     <MESSAGE value="3.3. Color Utility Functions" />
     <MESSAGE value="4.1. The ray Class" />
@@ -474,7 +490,8 @@
     <MESSAGE value="9.4. Mirrored Light Reflection" />
     <MESSAGE value="9.5. A Scene with Metal Spheres" />
     <MESSAGE value="9.6. Fuzzy Reflection" />
-    <option name="LAST_COMMIT_MESSAGE" value="9.6. Fuzzy Reflection" />
+    <MESSAGE value="10.2. Snell's Law" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.2. Snell's Law" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

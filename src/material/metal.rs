@@ -1,5 +1,5 @@
 use crate::hit::HitRecord;
-use crate::material::{Material, ScatterResult};
+use crate::material::material::{Material, ScatterResult};
 use crate::ray::Ray;
 use crate::vector3::{Color, Vector3};
 use rand::rngs::ThreadRng;
