@@ -15,6 +15,12 @@ pub struct Camera {
 }
 
 impl Camera {
+    pub fn origin(&self) -> &Point3 {
+        &self.origin
+    }
+}
+
+impl Camera {
     pub fn new(
         look_from: Point3,
         look_at: Point3,

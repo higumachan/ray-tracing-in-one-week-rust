@@ -2,7 +2,7 @@ use rand::prelude::ThreadRng;
 use rand::{thread_rng, Rng};
 use ray_tracing_in_one_week_rust::camera::Camera;
 use ray_tracing_in_one_week_rust::hit::{Hit, HitRecord};
-use ray_tracing_in_one_week_rust::hit_objects::HitObjects;
+use ray_tracing_in_one_week_rust::hit_objects::{HitObject, HitObjects};
 use ray_tracing_in_one_week_rust::material::dielectric::Dielectric;
 use ray_tracing_in_one_week_rust::material::lambertian::Lambertian;
 use ray_tracing_in_one_week_rust::material::material::Material;
@@ -49,7 +49,7 @@ fn random_scene(rng: &mut ThreadRng) -> HitObjects {
     let mut world = HitObjects::new();
 
     let ground_material = Arc::new(Lambertian::new(Color::new(0.5, 0.5, 0.5)));
-    world.add(Box::new(Sphere::new(
+    world.add(HitObject::Sphere(Sphere::new(
         Point3::new_y(-1000.0),
         1000.0,
         ground_material,
@@ -76,23 +76,27 @@ fn random_scene(rng: &mut ThreadRng) -> HitObjects {
                 } else {
                     Arc::new(Dielectric::new(1.5))
                 };
-                world.add(Box::new(Sphere::new(center, 0.2, material)));
+                world.add(HitObject::Sphere(Sphere::new(center, 0.2, material)));
             }
         }
     }
 
     let material = Arc::new(Dielectric::new(1.5));
-    world.add(Box::new(Sphere::new(Point3::new_y(1.0), 1.0, material)));
+    world.add(HitObject::Sphere(Sphere::new(
+        Point3::new_y(1.0),
+        1.0,
+        material,
+    )));
 
     let material = Arc::new(Lambertian::new(Color::new(0.4, 0.2, 0.1)));
-    world.add(Box::new(Sphere::new(
+    world.add(HitObject::Sphere(Sphere::new(
         Point3::new(-4.0, 1.0, 0.0),
         1.0,
         material,
     )));
 
     let material = Arc::new(Metal::new(Color::new(0.7, 0.6, 0.5), 0.0));
-    world.add(Box::new(Sphere::new(
+    world.add(HitObject::Sphere(Sphere::new(
         Point3::new(4.0, 1.0, 0.0),
         1.0,
         material,
@@ -111,7 +115,7 @@ fn main() {
     let mut rng = thread_rng();
 
     // World
-    let world = random_scene(&mut rng);
+    let mut world = random_scene(&mut rng);
 
     // Camera
     let look_from = Point3::new(13.0, 2.0, 3.0);
@@ -129,6 +133,8 @@ fn main() {
         aperture,
         dist_to_focus,
     );
+    world.indexing_from_camera(&camera);
+    let world = world;
 
     // Render
 

@@ -48,4 +48,8 @@ impl Hit for Sphere {
             self.material.clone(),
         ))
     }
+
+    fn distance_squared(&self, point: &Point3) -> f64 {
+        (&self.center - point).length_squared() - self.radius.powi(2)
+    }
 }
