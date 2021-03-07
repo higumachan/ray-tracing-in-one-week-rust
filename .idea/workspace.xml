@@ -9,10 +9,11 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="11.1. Camera Viewing Geometry">
-      <change afterPath="$PROJECT_DIR$/examples/11_2_positioning_and_orienting_the_camera.rs" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="11.2. Positioning and Orienting the Camera">
+      <change afterPath="$PROJECT_DIR$/examples/12_2_generating_sample_rays.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/camera.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vector3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector3.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,21 +66,7 @@
       <recent name="$PROJECT_DIR$/src/material" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run 11_2_positioning_and_orienting_the_camera">
-    <configuration name="Run 10_2_snells_law" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 10_2_snells_law" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Cargo.Run 12_2_generating_sample_rays">
     <configuration name="Run 10_3_total_internal_reflection" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --example 10_3_total_internal_reflection" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -136,6 +123,20 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Run 12_2_generating_sample_rays" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 12_2_generating_sample_rays" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --bin ray-tracing-in-one-week-rust" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -170,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Run 12_2_generating_sample_rays" />
         <item itemvalue="Cargo.Run 11_2_positioning_and_orienting_the_camera" />
         <item itemvalue="Cargo.Run 11_1_camera_viewing_geometry" />
         <item itemvalue="Cargo.Run 10_5_total_internal_reflection" />
         <item itemvalue="Cargo.Run 10_3_total_internal_reflection" />
-        <item itemvalue="Cargo.Run 10_2_snells_law" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +192,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="33372000" />
+      <workItem from="1615008528283" duration="34750000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -473,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615102446020</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="11.2. Positioning and Orienting the Camera">
+      <created>1615103035493</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1615103035493</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +499,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="5.2. Creating Or First Rayraced Image" />
     <MESSAGE value="6.1. Shading with Surface Normals" />
     <MESSAGE value="6.2. Simplifying the Ray-Sphere Intersection Code" />
     <MESSAGE value="6.3. An Abstraction for Hittable Objects" />
@@ -516,7 +523,8 @@
     <MESSAGE value="10.3.Total Internal Reflection" />
     <MESSAGE value="10.5.Modeling a Hollow Glass Sphere" />
     <MESSAGE value="11.1. Camera Viewing Geometry" />
-    <option name="LAST_COMMIT_MESSAGE" value="11.1. Camera Viewing Geometry" />
+    <MESSAGE value="11.2. Positioning and Orienting the Camera" />
+    <option name="LAST_COMMIT_MESSAGE" value="11.2. Positioning and Orienting the Camera" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -111,6 +111,16 @@ impl Vector3 {
         }
     }
 
+    pub fn random_in_unit_disk<R: RngCore>(rng: &mut R) -> Self {
+        loop {
+            let p = Vector3::new(rng.gen_range(-1.0..1.0), rng.gen_range(-1.0..1.0), 0.0);
+            if p.length_squared() >= 1.0 {
+                continue;
+            }
+            return p;
+        }
+    }
+
     pub fn random_unit_vector<R: RngCore>(rng: &mut R) -> Self {
         Self::random_in_unit_sphere(rng).unit_vector()
     }
