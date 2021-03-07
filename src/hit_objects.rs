@@ -56,11 +56,11 @@ impl Hit for HitObjects {
             let t = record.as_ref().map(|x| x.t()).unwrap_or(t_max);
             let distance_sq = obj.distance_squared(ray.origin());
 
-            if distance_sq > t.powi(2) {
-                break;
-            }
-
-            record = obj.hit(ray, t_min, t).or(record.clone());
+            record = if distance_sq < t.powi(2) {
+                obj.hit(ray, t_min, t).or(record)
+            } else {
+                record
+            };
         }
         record
     }

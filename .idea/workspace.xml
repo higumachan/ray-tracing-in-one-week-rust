@@ -12,20 +12,10 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="14.1. Simple parallel in rayon">
-      <change afterPath="$PROJECT_DIR$/benches/ray_color.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ray-tracing-in-one-week-rust.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ray-tracing-in-one-week-rust.iml" afterDir="false" />
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="カメラの位置からオブジェクトをソートしてみる。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/result/13_1_a_final_render.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/assets/result/13_1_a_final_render.ppm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/result/14_1_parallel.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/assets/result/14_1_parallel.ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/13_1_a_final_render.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/13_1_a_final_render.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/14_1_parallel.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/14_1_parallel.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hit.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/hit.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hit_objects.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/hit_objects.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sphere.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sphere.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +202,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="47143000" />
+      <workItem from="1615008528283" duration="47689000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -522,7 +512,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615123910601</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="カメラの位置からオブジェクトをソートしてみる。">
+      <created>1615131139015</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1615131139015</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -540,7 +537,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="6.4. Front Faces Versus Back Faces" />
     <MESSAGE value="6.5. A List of Hittable Objects" />
     <MESSAGE value="6.7. Common Constants and Utility Functions" />
     <MESSAGE value="7.2 Generating Pixels with Multiple Samples" />
@@ -565,7 +561,8 @@
     <MESSAGE value="12.2. Generating Sample Rays" />
     <MESSAGE value="13.1. A Final Render" />
     <MESSAGE value="14.1. Simple parallel in rayon" />
-    <option name="LAST_COMMIT_MESSAGE" value="14.1. Simple parallel in rayon" />
+    <MESSAGE value="カメラの位置からオブジェクトをソートしてみる。" />
+    <option name="LAST_COMMIT_MESSAGE" value="カメラの位置からオブジェクトをソートしてみる。" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
