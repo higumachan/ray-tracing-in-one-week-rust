@@ -1,6 +1,7 @@
 use crate::hit::HitRecord;
 use crate::ray::Ray;
 use crate::vector3::Color;
+use rand::RngCore;
 use std::fmt::Debug;
 
 #[derive(Debug, Clone)]
@@ -19,5 +20,10 @@ impl ScatterResult {
 }
 
 pub trait Material: Debug {
-    fn scatter(&self, input: &Ray, record: &HitRecord) -> Option<ScatterResult>;
+    fn scatter<R: RngCore>(
+        &self,
+        rng: &mut R,
+        input: &Ray,
+        record: &HitRecord,
+    ) -> Option<ScatterResult>;
 }
