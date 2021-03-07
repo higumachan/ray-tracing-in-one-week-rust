@@ -52,11 +52,7 @@ impl Vector3 {
     }
 
     pub fn dot(&self, rhs: &Self) -> f64 {
-        self.elements
-            .iter()
-            .zip(rhs.elements.iter())
-            .map(|(a, b)| a * b)
-            .sum()
+        self.zip_elements(rhs).map(|(a, b)| a * b).sum()
     }
 
     pub fn cross(&self, rhs: &Self) -> Self {
@@ -74,6 +70,14 @@ impl Vector3 {
     pub fn reflect(&self, normal: &Self) -> Self {
         let l = normal * (2.0 * self.dot(normal));
         self - &l
+    }
+
+    pub fn refract(&self, normal: &Self, etai_over_etat: f64) -> Vector3 {
+        let cos_theta = f64::min((-self).dot(normal), 1.0);
+        let r_out_perp = (self + &(normal * cos_theta)) * etai_over_etat;
+        let r_out_parallel = normal * -f64::sqrt(f64::abs(1.0 - r_out_perp.length_squared()));
+
+        r_out_perp + r_out_parallel
     }
 
     pub fn unit_vector(&self) -> Self {
@@ -134,11 +138,19 @@ impl Vector3 {
     }
 }
 
+impl Neg for &Vector3 {
+    type Output = Vector3;
+
+    fn neg(self) -> Self::Output {
+        Self::Output::new_from_iter(self.elements.iter().copied().map(f64::neg))
+    }
+}
+
 impl Neg for Vector3 {
     type Output = Self;
 
     fn neg(self) -> Self::Output {
-        Self::new_from_iter(self.elements.iter().copied().map(f64::neg))
+        -(&self)
     }
 }
 

@@ -1,6 +1,7 @@
 use rand::prelude::ThreadRng;
 use rand::{thread_rng, Rng};
 use ray_tracing_in_one_week_rust::camera::Camera;
+use ray_tracing_in_one_week_rust::dielectric::Dielectric;
 use ray_tracing_in_one_week_rust::hit::Hit;
 use ray_tracing_in_one_week_rust::hit_objects::HitObjects;
 use ray_tracing_in_one_week_rust::lambertian::Lambertian;
@@ -42,16 +43,6 @@ fn ray_color(rng: &mut ThreadRng, ray: &Ray, world: &HitObjects, depth: usize) -
     })
 }
 
-fn hit_sphere(center: &Point3, radius: f64, ray: &Ray) -> Option<f64> {
-    let oc = ray.origin() - center;
-    let a = ray.direction().length_squared();
-    let half_b = oc.dot(ray.direction());
-    let c = oc.length_squared() - radius.powi(2);
-    let discriminant = half_b.powi(2) - a * c;
-
-    (discriminant >= 0.0).then(|| (-half_b - discriminant.sqrt()) / a)
-}
-
 fn main() {
     // Image
     let aspect_ratio = 16.0 / 9.0;
@@ -64,8 +55,8 @@ fn main() {
     // World
     let mut world = HitObjects::new();
     let material_ground = Rc::new(Lambertian::new(Color::new(0.8, 0.8, 0.0)));
-    let material_center = Rc::new(Lambertian::new(Color::new(0.7, 0.3, 0.3)));
-    let material_left = Rc::new(Metal::new(Color::new_all(0.8), 0.3));
+    let material_center = Rc::new(Dielectric::new(1.5));
+    let material_left = Rc::new(Dielectric::new(1.5));
     let material_right = Rc::new(Metal::new(Color::new(0.8, 0.6, 0.2), 1.0));
 
     world.add(Box::new(Sphere::new(
@@ -108,9 +99,9 @@ fn main() {
                     let r = camera.ray(u, v);
 
                     Vector3::from(ray_color(&mut rng, &r, &world, max_depth))
+                        / samples_per_pixel as f64
                 })
-                .sum::<Vector3>()
-                / samples_per_pixel as f64;
+                .sum::<Vector3>();
             let pixel_color = Color::from(pixel_color.sqrt());
             println!("{}", pixel_color);
         }
