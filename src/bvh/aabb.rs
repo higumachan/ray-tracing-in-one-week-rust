@@ -47,8 +47,8 @@ impl AABB {
             .all(|((a, b), inv_d)| {
                 let (t0, t1) = if *inv_d < 0.0 { (b, a) } else { (a, b) };
 
-                t_min = f64::min(t_min, t0);
-                t_max = f64::max(t_max, t1);
+                t_min = f64::max(t_min, t0);
+                t_max = f64::min(t_max, t1);
 
                 t_min < t_max
             })

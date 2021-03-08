@@ -6,7 +6,7 @@ use crate::sphere::Sphere;
 use crate::vector3::Point3;
 use unwrap_ord::UnwrapOrd;
 
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub enum HitObject {
     Sphere(Sphere),
 }
@@ -37,7 +37,7 @@ impl Hit for HitObject {
     }
 }
 
-pub struct HitObjects(Vec<HitObject>);
+pub struct HitObjects(pub Vec<HitObject>);
 
 impl HitObjects {
     pub fn new() -> Self {

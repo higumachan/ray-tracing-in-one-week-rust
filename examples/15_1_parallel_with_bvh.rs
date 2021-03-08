@@ -1,8 +1,8 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use rand::rngs::ThreadRng;
+use rand::prelude::ThreadRng;
 use rand::{thread_rng, Rng};
+use ray_tracing_in_one_week_rust::bvh::node::Node;
 use ray_tracing_in_one_week_rust::camera::Camera;
-use ray_tracing_in_one_week_rust::hit::Hit;
+use ray_tracing_in_one_week_rust::hit::{Hit, HitRecord};
 use ray_tracing_in_one_week_rust::hit_objects::{HitObject, HitObjects};
 use ray_tracing_in_one_week_rust::material::dielectric::Dielectric;
 use ray_tracing_in_one_week_rust::material::lambertian::Lambertian;
@@ -11,10 +11,14 @@ use ray_tracing_in_one_week_rust::material::metal::Metal;
 use ray_tracing_in_one_week_rust::ray::Ray;
 use ray_tracing_in_one_week_rust::sphere::Sphere;
 use ray_tracing_in_one_week_rust::vector3::{Color, Point3, Vector3};
+use rayon::prelude::*;
+use std::collections::hash_map::RandomState;
 use std::f64::INFINITY;
 use std::sync::Arc;
+use std::thread::sleep;
+use std::time::Duration;
 
-fn ray_color(rng: &mut ThreadRng, ray: &Ray, world: &HitObjects, depth: usize) -> Color {
+fn ray_color(rng: &mut ThreadRng, ray: &Ray, world: &Node, depth: usize) -> Color {
     if depth == 0 {
         return Color::black();
     }
@@ -102,17 +106,18 @@ fn random_scene(rng: &mut ThreadRng) -> HitObjects {
     world
 }
 
-fn criterion_benchmark(c: &mut Criterion) {
+fn main() {
     // Image
     let aspect_ratio = 3.0 / 2.0;
-    let image_width = 1200usize;
+    let image_width = 700usize;
     let image_height = (image_width as f64 / aspect_ratio) as usize;
     let samples_per_pixel = 500;
     let max_depth = 50;
     let mut rng = thread_rng();
 
     // World
-    let mut world = random_scene(&mut rng);
+    let world = random_scene(&mut rng);
+    let world = Node::new(&mut rng, &world.0, 0.0, 0.0).unwrap();
 
     // Camera
     let look_from = Point3::new(13.0, 2.0, 3.0);
@@ -131,16 +136,30 @@ fn criterion_benchmark(c: &mut Criterion) {
         dist_to_focus,
     );
 
-    world.indexing_from_camera(&camera);
-    let world = world;
+    // Render
 
-    c.bench_function("ray_color", |b| {
-        b.iter(|| {
-            let ray = camera.ray(&mut rng, 0.5, 0.5);
-            ray_color(&mut rng, &ray, &world, 50)
-        })
-    });
+    println!("P3");
+    println!("{} {}", image_width, image_height);
+    println!("255");
+
+    for j in (0..image_height).rev() {
+        eprint!("\rScanlines remaining: {:3}", j);
+        for i in (0..image_width) {
+            let pixel_color: Vector3 = (0..samples_per_pixel)
+                .into_par_iter()
+                .map(|_| {
+                    let mut rng = thread_rng();
+                    let u = (i as f64 + rng.gen::<f64>()) / (image_width - 1) as f64;
+                    let v = (j as f64 + rng.gen::<f64>()) / (image_height - 1) as f64;
+                    let r = camera.ray(&mut rng, u, v);
+
+                    Vector3::from(ray_color(&mut rng, &r, &world, max_depth))
+                        / samples_per_pixel as f64
+                })
+                .sum::<Vector3>();
+            let pixel_color = Color::from(pixel_color.sqrt());
+            println!("{}", pixel_color);
+        }
+    }
+    eprintln!("\nDone");
 }
-
-criterion_group!(benches, criterion_benchmark);
-criterion_main!(benches);

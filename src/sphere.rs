@@ -5,7 +5,7 @@ use crate::ray::Ray;
 use crate::vector3::{Point3, Vector3};
 use std::sync::Arc;
 
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct Sphere {
     center: Point3,
     radius: f64,

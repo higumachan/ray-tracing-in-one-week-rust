@@ -7,6 +7,7 @@ use rand::{Rng, RngCore};
 use std::cmp::Ordering;
 use std::sync::Arc;
 
+#[derive(Debug)]
 pub enum Tree {
     Leaf(HitObject),
     Node(Box<Node>),
@@ -36,6 +37,7 @@ impl Hit for Tree {
     }
 }
 
+#[derive(Debug)]
 pub struct Node {
     left: Tree,
     right: Tree,
@@ -54,7 +56,7 @@ fn bbox_compare(axis: usize, a: &HitObject, b: &HitObject) -> Ordering {
 }
 
 impl Node {
-    fn new<R: RngCore>(
+    pub fn new<R: RngCore>(
         rng: &mut R,
         src_objects: &Vec<HitObject>,
         time0: f64,

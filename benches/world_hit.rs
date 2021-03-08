@@ -1,6 +1,7 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use rand::rngs::ThreadRng;
+use rand::prelude::ThreadRng;
 use rand::{thread_rng, Rng};
+use ray_tracing_in_one_week_rust::bvh::node::Node;
 use ray_tracing_in_one_week_rust::camera::Camera;
 use ray_tracing_in_one_week_rust::hit::Hit;
 use ray_tracing_in_one_week_rust::hit_objects::{HitObject, HitObjects};
@@ -8,39 +9,10 @@ use ray_tracing_in_one_week_rust::material::dielectric::Dielectric;
 use ray_tracing_in_one_week_rust::material::lambertian::Lambertian;
 use ray_tracing_in_one_week_rust::material::material::Material;
 use ray_tracing_in_one_week_rust::material::metal::Metal;
-use ray_tracing_in_one_week_rust::ray::Ray;
 use ray_tracing_in_one_week_rust::sphere::Sphere;
 use ray_tracing_in_one_week_rust::vector3::{Color, Point3, Vector3};
 use std::f64::INFINITY;
 use std::sync::Arc;
-
-fn ray_color(rng: &mut ThreadRng, ray: &Ray, world: &HitObjects, depth: usize) -> Color {
-    if depth == 0 {
-        return Color::black();
-    }
-
-    let rec = world.hit(ray, 0.001, INFINITY);
-    rec.map(|r| {
-        Color::from(
-            r.material()
-                .scatter(rng, ray, &r)
-                .map(|result| {
-                    Vector3::from(result.attenuation).hadamard_product(&Vector3::from(ray_color(
-                        rng,
-                        &result.scattered,
-                        world,
-                        depth - 1,
-                    )))
-                })
-                .unwrap_or_else(Vector3::zero),
-        )
-    })
-    .unwrap_or_else(|| {
-        let unit_direction = ray.direction().unit_vector();
-        let t = 0.5 * (unit_direction.y() + 1.0);
-        Color::from(&Vector3::one() * (1.0 - t) + &Vector3::new(0.5, 0.7, 1.0) * t)
-    })
-}
 
 fn random_scene(rng: &mut ThreadRng) -> HitObjects {
     let mut world = HitObjects::new();
@@ -103,18 +75,11 @@ fn random_scene(rng: &mut ThreadRng) -> HitObjects {
 }
 
 fn criterion_benchmark(c: &mut Criterion) {
-    // Image
-    let aspect_ratio = 3.0 / 2.0;
-    let image_width = 1200usize;
-    let image_height = (image_width as f64 / aspect_ratio) as usize;
-    let samples_per_pixel = 500;
-    let max_depth = 50;
     let mut rng = thread_rng();
+    let world = random_scene(&mut rng);
+    let bvh = Node::new(&mut rng, &world.0, 0.0, 0.0).unwrap();
 
-    // World
-    let mut world = random_scene(&mut rng);
-
-    // Camera
+    let aspect_ratio = 3.0 / 2.0;
     let look_from = Point3::new(13.0, 2.0, 3.0);
     let look_at = Point3::zero();
     let vup = Vector3::new_y(1.0);
@@ -131,13 +96,30 @@ fn criterion_benchmark(c: &mut Criterion) {
         dist_to_focus,
     );
 
-    world.indexing_from_camera(&camera);
-    let world = world;
+    let rays: Vec<_> = (0..1000)
+        .into_iter()
+        .map(|_| {
+            let u = rng.gen::<f64>();
+            let v = rng.gen::<f64>();
+            camera.ray(&mut rng, u, v)
+        })
+        .collect();
 
-    c.bench_function("ray_color", |b| {
+    c.bench_function("world_hit normal", |b| {
         b.iter(|| {
-            let ray = camera.ray(&mut rng, 0.5, 0.5);
-            ray_color(&mut rng, &ray, &world, 50)
+            let mut hit = 0;
+            for ray in &rays {
+                hit += world.hit(ray, 0.001, INFINITY).is_some() as i32;
+            }
+        })
+    });
+
+    c.bench_function("world_hit bvh", |b| {
+        b.iter(|| {
+            let mut hit = 0;
+            for ray in &rays {
+                hit += bvh.hit(ray, 0.001, INFINITY).is_some() as i32;
+            }
         })
     });
 }

@@ -17,3 +17,7 @@ criterion = "0.3"
 [[bench]]
 name = "ray_color"
 harness = false
+
+[[bench]]
+name = "world_hit"
+harness = false
