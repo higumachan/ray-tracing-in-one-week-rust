@@ -1,5 +1,6 @@
 use std::f64::consts::PI;
 
+pub mod bvh;
 pub mod camera;
 pub mod hit;
 pub mod hit_objects;

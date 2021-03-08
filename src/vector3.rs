@@ -43,6 +43,10 @@ impl Vector3 {
         unsafe { *self.elements.get_unchecked(2) }
     }
 
+    pub fn element(&self, i: usize) -> f64 {
+        self.elements[i]
+    }
+
     pub fn length_squared(&self) -> f64 {
         self.dot(self)
     }
@@ -133,7 +137,11 @@ impl Vector3 {
         Self::new_from_iter(self.zip_elements(rhs).map(|(a, b)| a * b))
     }
 
-    fn new_from_iter<I: Iterator<Item = f64>>(mut iter: I) -> Self {
+    pub fn invert(&self) -> Self {
+        Self::new_from_iter(self.elements.iter().map(|x| 1.0 / x))
+    }
+
+    pub fn new_from_iter<I: Iterator<Item = f64>>(mut iter: I) -> Self {
         Self {
             elements: [
                 iter.next().unwrap(),
@@ -143,7 +151,11 @@ impl Vector3 {
         }
     }
 
-    fn zip_elements<'a>(&'a self, other: &'a Self) -> impl Iterator<Item = (&'a f64, &'a f64)> {
+    pub fn iter_elements(&self) -> impl Iterator<Item = &f64> {
+        self.elements.iter()
+    }
+
+    pub fn zip_elements<'a>(&'a self, other: &'a Self) -> impl Iterator<Item = (&'a f64, &'a f64)> {
         self.elements.iter().zip(other.elements.iter())
     }
 }
@@ -305,6 +317,10 @@ impl Point3 {
         self.0.z()
     }
 
+    pub fn element(&self, i: usize) -> f64 {
+        self.0.elements[i]
+    }
+
     pub fn new_x(x: f64) -> Self {
         Self::new(x, 0.0, 0.0)
     }
@@ -313,6 +329,10 @@ impl Point3 {
     }
     pub fn new_z(z: f64) -> Self {
         Self::new(0.0, 0.0, z)
+    }
+
+    pub fn as_vector(&self) -> &Vector3 {
+        &self.0
     }
 }
 

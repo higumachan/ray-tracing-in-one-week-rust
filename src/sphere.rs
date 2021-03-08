@@ -1,9 +1,11 @@
+use crate::bvh::aabb::AABB;
 use crate::hit::{Hit, HitRecord};
 use crate::material::material::Material;
 use crate::ray::Ray;
-use crate::vector3::Point3;
+use crate::vector3::{Point3, Vector3};
 use std::sync::Arc;
 
+#[derive(Clone)]
 pub struct Sphere {
     center: Point3,
     radius: f64,
@@ -46,6 +48,13 @@ impl Hit for Sphere {
             outward_normal,
             ray,
             self.material.clone(),
+        ))
+    }
+
+    fn bounding_box(&self, _time0: f64, _time1: f64) -> Option<AABB> {
+        Some(AABB::new(
+            &self.center - &Vector3::new(self.radius, self.radius, self.radius),
+            &self.center + &Vector3::new(self.radius, self.radius, self.radius),
         ))
     }
 

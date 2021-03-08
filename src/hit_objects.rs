@@ -1,3 +1,4 @@
+use crate::bvh::aabb::AABB;
 use crate::camera::Camera;
 use crate::hit::{Hit, HitRecord};
 use crate::ray::Ray;
@@ -5,6 +6,7 @@ use crate::sphere::Sphere;
 use crate::vector3::Point3;
 use unwrap_ord::UnwrapOrd;
 
+#[derive(Clone)]
 pub enum HitObject {
     Sphere(Sphere),
 }
@@ -13,6 +15,12 @@ impl Hit for HitObject {
     fn hit(&self, ray: &Ray, t_min: f64, t_max: f64) -> Option<HitRecord> {
         match self {
             Self::Sphere(s) => s.hit(ray, t_min, t_max),
+        }
+    }
+
+    fn bounding_box(&self, time0: f64, time1: f64) -> Option<AABB> {
+        match self {
+            Self::Sphere(s) => s.bounding_box(time0, time1),
         }
     }
 
@@ -65,6 +73,24 @@ impl Hit for HitObjects {
             record = obj.hit(ray, t_min, t).or(record.clone());
         }
         record
+    }
+
+    fn bounding_box(&self, time0: f64, time1: f64) -> Option<AABB> {
+        if self.0.is_empty() {
+            return None;
+        }
+
+        let mut result_box: Option<AABB> = None;
+
+        for obj in &self.0 {
+            if let Some(bbox) = obj.bounding_box(time0, time1) {
+                result_box = result_box.map(|x| x.surrounding_box(&bbox)).or(Some(bbox));
+            } else {
+                return None;
+            }
+        }
+
+        result_box
     }
 
     fn nearest_squared(&self, point: &Point3) -> f64 {

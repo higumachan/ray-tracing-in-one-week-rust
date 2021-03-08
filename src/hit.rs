@@ -1,3 +1,4 @@
+use crate::bvh::aabb::AABB;
 use crate::material::material::Material;
 use crate::ray::Ray;
 use crate::vector3::{Point3, Vector3};
@@ -57,6 +58,8 @@ impl HitRecord {
 
 pub trait Hit: Sync + Send {
     fn hit(&self, ray: &Ray, t_min: f64, t_max: f64) -> Option<HitRecord>;
+    fn bounding_box(&self, time0: f64, time1: f64) -> Option<AABB>;
+
     fn nearest_squared(&self, point: &Point3) -> f64;
     fn farest_squared(&self, point: &Point3) -> f64;
 }
