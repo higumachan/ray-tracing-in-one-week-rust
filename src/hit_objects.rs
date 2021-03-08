@@ -16,9 +16,15 @@ impl Hit for HitObject {
         }
     }
 
-    fn distance_squared(&self, point: &Point3) -> f64 {
+    fn nearest_squared(&self, point: &Point3) -> f64 {
         match self {
-            Self::Sphere(s) => s.distance_squared(point),
+            Self::Sphere(s) => s.nearest_squared(point),
+        }
+    }
+
+    fn farest_squared(&self, point: &Point3) -> f64 {
+        match self {
+            Self::Sphere(s) => s.farest_squared(point),
         }
     }
 }
@@ -45,7 +51,7 @@ impl HitObjects {
         let origin = camera.origin();
 
         self.0
-            .sort_by_cached_key(|x| UnwrapOrd(x.distance_squared(origin)));
+            .sort_by_cached_key(|x| UnwrapOrd(x.nearest_squared(origin)));
     }
 }
 
@@ -54,18 +60,18 @@ impl Hit for HitObjects {
         let mut record: Option<HitRecord> = None;
         for obj in &self.0 {
             let t = record.as_ref().map(|x| x.t()).unwrap_or(t_max);
-            let distance_sq = obj.distance_squared(ray.origin());
+            let distance_sq = obj.farest_squared(ray.origin());
 
-            record = if distance_sq < t.powi(2) {
-                obj.hit(ray, t_min, t).or(record)
-            } else {
-                record
-            };
+            record = obj.hit(ray, t_min, t).or(record.clone());
         }
         record
     }
 
-    fn distance_squared(&self, point: &Point3) -> f64 {
+    fn nearest_squared(&self, point: &Point3) -> f64 {
+        unimplemented!()
+    }
+
+    fn farest_squared(&self, point: &Point3) -> f64 {
         unimplemented!()
     }
 }

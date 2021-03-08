@@ -12,11 +12,7 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="カメラの位置からオブジェクトをソートしてみる。">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/result/14_1_parallel.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/assets/result/14_1_parallel.ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hit_objects.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/hit_objects.rs" afterDir="false" />
-    </list>
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="めっちゃ時間かけて見る。" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +198,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="47689000" />
+      <workItem from="1615008528283" duration="52711000" />
     </task>
     <task id="LOCAL-00001" summary="The PPM Image Format">
       <created>1615009183467</created>
@@ -519,7 +515,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615131139015</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="breakするのはだめ">
+      <created>1615131485109</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1615131485109</updated>
+    </task>
+    <task id="LOCAL-00047" summary="めっちゃ時間かけて見る。">
+      <created>1615203709735</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1615203709735</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,8 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="6.5. A List of Hittable Objects" />
-    <MESSAGE value="6.7. Common Constants and Utility Functions" />
     <MESSAGE value="7.2 Generating Pixels with Multiple Samples" />
     <MESSAGE value="8.1. A Simple Diffuse Material" />
     <MESSAGE value="8.2. Limiting the Number of Child Rays" />
@@ -562,7 +570,9 @@
     <MESSAGE value="13.1. A Final Render" />
     <MESSAGE value="14.1. Simple parallel in rayon" />
     <MESSAGE value="カメラの位置からオブジェクトをソートしてみる。" />
-    <option name="LAST_COMMIT_MESSAGE" value="カメラの位置からオブジェクトをソートしてみる。" />
+    <MESSAGE value="breakするのはだめ" />
+    <MESSAGE value="めっちゃ時間かけて見る。" />
+    <option name="LAST_COMMIT_MESSAGE" value="めっちゃ時間かけて見る。" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

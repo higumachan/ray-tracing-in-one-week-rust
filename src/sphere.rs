@@ -49,7 +49,11 @@ impl Hit for Sphere {
         ))
     }
 
-    fn distance_squared(&self, point: &Point3) -> f64 {
+    fn nearest_squared(&self, point: &Point3) -> f64 {
         (&self.center - point).length_squared() - self.radius.powi(2)
+    }
+
+    fn farest_squared(&self, point: &Point3) -> f64 {
+        (&self.center - point).length_squared() + self.radius.powi(2)
     }
 }

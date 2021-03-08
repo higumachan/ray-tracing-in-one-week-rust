@@ -57,5 +57,6 @@ impl HitRecord {
 
 pub trait Hit: Sync + Send {
     fn hit(&self, ray: &Ray, t_min: f64, t_max: f64) -> Option<HitRecord>;
-    fn distance_squared(&self, point: &Point3) -> f64;
+    fn nearest_squared(&self, point: &Point3) -> f64;
+    fn farest_squared(&self, point: &Point3) -> f64;
 }
