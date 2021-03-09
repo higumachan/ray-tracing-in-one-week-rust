@@ -40,7 +40,7 @@ impl Hit for Tree {
 #[derive(Debug)]
 pub struct Node {
     left: Tree,
-    right: Tree,
+    right: Option<Tree>,
     bbox: AABB,
 }
 
@@ -58,66 +58,82 @@ fn bbox_compare(axis: usize, a: &HitObject, b: &HitObject) -> Ordering {
 impl Node {
     pub fn new<R: RngCore>(
         rng: &mut R,
-        src_objects: &Vec<HitObject>,
+        src_objects: &[HitObject],
         time0: f64,
         time1: f64,
     ) -> Option<Self> {
-        Self::new_inner(rng, src_objects, 0, src_objects.len(), time0, time1)
+        let mut objects = src_objects.to_vec();
+        Self::new_inner(rng, &mut objects, time0, time1)
     }
 
     fn new_inner<R: RngCore>(
         rng: &mut R,
-        src_objects: &Vec<HitObject>,
-        start: usize,
-        end: usize,
+        objects: &mut [HitObject],
         time0: f64,
         time1: f64,
     ) -> Option<Self> {
-        let mut objects = src_objects.clone();
         let axis = rng.gen_range(0..3);
 
-        let object_span = end - start;
+        let object_span = objects.len();
 
         let (left, right) = match object_span {
-            1 => (
-                Tree::Leaf(objects[start].clone()),
-                Tree::Leaf(objects[start].clone()),
-            ),
+            0 => unreachable!(),
+            1 => (Tree::Leaf(objects.first().unwrap().clone()), None),
             2 => {
-                if bbox_compare(axis, &objects[start], &objects[start + 1]) == Ordering::Less {
+                if bbox_compare(axis, &objects[0], &objects[1]) == Ordering::Less {
                     (
-                        Tree::Leaf(objects[start].clone()),
-                        Tree::Leaf(objects[start + 1].clone()),
+                        Tree::Leaf(objects[0].clone()),
+                        Some(Tree::Leaf(objects[1].clone())),
                     )
                 } else {
                     (
-                        Tree::Leaf(objects[start + 1].clone()),
-                        Tree::Leaf(objects[start].clone()),
+                        Tree::Leaf(objects[1].clone()),
+                        Some(Tree::Leaf(objects[0].clone())),
                     )
                 }
             }
             _ => {
                 objects.sort_by(|a, b| bbox_compare(axis, a, b));
 
-                let mid = start + object_span / 2;
+                let mid = object_span / 2;
                 (
                     Tree::Node(Box::new(Node::new_inner(
-                        rng, &objects, start, mid, time0, time1,
+                        rng,
+                        &mut objects[0..mid],
+                        time0,
+                        time1,
                     )?)),
-                    Tree::Node(Box::new(Node::new_inner(
-                        rng, &objects, mid, end, time0, time1,
-                    )?)),
+                    Some(Tree::Node(Box::new(Node::new_inner(
+                        rng,
+                        &mut objects[mid..object_span],
+                        time0,
+                        time1,
+                    )?))),
                 )
             }
         };
 
         let left_box = left.bounding_box(time0, time1)?;
-        let right_box = right.bounding_box(time0, time1)?;
+        let right_box = right
+            .as_ref()
+            .and_then(|r| r.bounding_box(time0, time1))
+            .unwrap_or_else(|| left_box.clone());
 
         Some(Self {
             left,
             right,
             bbox: left_box.surrounding_box(&right_box),
+        })
+    }
+
+    pub fn len(&self) -> usize {
+        (match &self.left {
+            Tree::Leaf(_) => 1,
+            Tree::Node(n) => n.len(),
+        }) + (match &self.right {
+            Some(Tree::Leaf(_)) => 1,
+            Some(Tree::Node(n)) => n.len(),
+            None => 0,
         })
     }
 }
@@ -129,11 +145,13 @@ impl Hit for Node {
         }
 
         let hit_left = self.left.hit(ray, t_min, t_max);
-        let hit_right = self.right.hit(
-            ray,
-            t_min,
-            hit_left.as_ref().map(|r| r.t()).unwrap_or(t_max),
-        );
+        let hit_right = self.right.as_ref().and_then(|r| {
+            r.hit(
+                ray,
+                t_min,
+                hit_left.as_ref().map(|r| r.t()).unwrap_or(t_max),
+            )
+        });
 
         hit_right.or(hit_left)
     }

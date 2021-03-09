@@ -16,15 +16,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="BVHの実装を行う">
-      <change afterPath="$PROJECT_DIR$/benches/world_hit.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/15_1_parallel_with_bvh.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/benches/ray_color.rs" beforeDir="false" afterPath="$PROJECT_DIR$/benches/ray_color.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/15_1_parallel_with_bvh.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/15_1_parallel_with_bvh.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bvh/aabb.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/bvh/aabb.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bvh/node.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/bvh/node.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hit_objects.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/hit_objects.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sphere.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sphere.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,14 +221,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="63875000" />
-    </task>
-    <task id="LOCAL-00001" summary="The PPM Image Format">
-      <created>1615009183467</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1615009183467</updated>
+      <workItem from="1615008528283" duration="67746000" />
     </task>
     <task id="LOCAL-00002" summary="2.3. Adding a Progress Indicator">
       <created>1615009536200</created>
@@ -571,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615215763024</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="BVHの実装を行う">
+      <created>1615218371850</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1615218371850</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

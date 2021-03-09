@@ -27,31 +27,27 @@ impl AABB {
     pub(crate) fn hit(&self, ray: &Ray, t_min: f64, t_max: f64) -> bool {
         let mut t_min = t_min;
         let mut t_max = t_max;
-        let v1 = self
-            .minimum
-            .as_vector()
-            .zip_elements(ray.origin().as_vector())
-            .map(|(a, b)| a - b)
-            .zip(ray.inv_direction().iter_elements())
-            .map(|(a, b)| a * b);
-        let v2 = self
-            .maximum
-            .as_vector()
-            .zip_elements(ray.origin().as_vector())
-            .map(|(a, b)| a - b)
-            .zip(ray.inv_direction().iter_elements())
-            .map(|(a, b)| a * b);
 
-        v1.zip(v2)
-            .zip(ray.inv_direction().iter_elements())
-            .all(|((a, b), inv_d)| {
-                let (t0, t1) = if *inv_d < 0.0 { (b, a) } else { (a, b) };
+        for a in 0..3 {
+            let t0 = (self.minimum().element(a) - ray.origin().element(a))
+                * ray.inv_direction().element(a);
+            let t1 = (self.maximum().element(a) - ray.origin().element(a))
+                * ray.inv_direction().element(a);
 
-                t_min = f64::max(t_min, t0);
-                t_max = f64::min(t_max, t1);
+            let (t0, t1) = if ray.inv_direction().element(a) < 0.0 {
+                (t1, t0)
+            } else {
+                (t0, t1)
+            };
 
-                t_min < t_max
-            })
+            t_min = t_min.max(t0);
+            t_max = t_max.min(t1);
+
+            if t_max <= t_min {
+                return false;
+            }
+        }
+        true
     }
 
     pub fn surrounding_box(&self, other: &Self) -> Self {

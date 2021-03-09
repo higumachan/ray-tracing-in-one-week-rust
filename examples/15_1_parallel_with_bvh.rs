@@ -109,7 +109,7 @@ fn random_scene(rng: &mut ThreadRng) -> HitObjects {
 fn main() {
     // Image
     let aspect_ratio = 3.0 / 2.0;
-    let image_width = 700usize;
+    let image_width = 4096usize;
     let image_height = (image_width as f64 / aspect_ratio) as usize;
     let samples_per_pixel = 500;
     let max_depth = 50;
