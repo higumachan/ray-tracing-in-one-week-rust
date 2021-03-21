@@ -2,7 +2,7 @@ use crate::bvh::aabb::AABB;
 use crate::hit::{Hit, HitRecord};
 use crate::material::material::Material;
 use crate::ray::Ray;
-use crate::sphere::hit_sphere;
+use crate::sphere::{hit_sphere, sphere_bounding_box};
 use crate::vector3::Point3;
 use std::sync::Arc;
 
@@ -22,7 +22,12 @@ impl Hit for MovingSphere {
         hit_sphere(&center, self.radius, &self.material, ray, t_min, t_max)
     }
 
-    fn bounding_box(&self, time0: f64, time1: f64) -> Option<AABB> {}
+    fn bounding_box(&self, time0: f64, time1: f64) -> Option<AABB> {
+        let b0 = sphere_bounding_box(&self.center(time0), self.radius);
+        let b1 = sphere_bounding_box(&self.center(time1), self.radius);
+
+        Some(b0.surrounding_box(&b1))
+    }
 
     fn nearest_squared(&self, point: &Point3) -> f64 {
         unimplemented!()

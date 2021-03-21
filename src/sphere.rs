@@ -53,16 +53,20 @@ pub(crate) fn hit_sphere(
     })
 }
 
+pub(crate) fn sphere_bounding_box(center: &Point3, radius: f64) -> AABB {
+    AABB::new(
+        center - &Vector3::new(radius, radius, radius),
+        center + &Vector3::new(radius, radius, radius),
+    )
+}
+
 impl Hit for Sphere {
     fn hit(&self, ray: &Ray, t_min: f64, t_max: f64) -> Option<HitRecord> {
         hit_sphere(&self.center, self.radius, &self.material, ray, t_min, t_max)
     }
 
     fn bounding_box(&self, _time0: f64, _time1: f64) -> Option<AABB> {
-        Some(AABB::new(
-            &self.center - &Vector3::new(self.radius, self.radius, self.radius),
-            &self.center + &Vector3::new(self.radius, self.radius, self.radius),
-        ))
+        Some(sphere_bounding_box(&self.center, self.radius))
     }
 
     fn nearest_squared(&self, point: &Point3) -> f64 {
