@@ -16,8 +16,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="BVHのデバッグを行う">
+      <change afterPath="$PROJECT_DIR$/src/texture/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/texture/solid_color.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/texture/texture.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moving_sphere.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/moving_sphere.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hit.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/hit.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/material/lambertian.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/material/lambertian.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sphere.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sphere.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,6 +73,7 @@
       <recent name="$PROJECT_DIR$/examples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/texture" />
       <recent name="$PROJECT_DIR$/src/material" />
     </key>
   </component>
@@ -170,11 +176,6 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Cargo.Run" />
       <item itemvalue="Cargo.bench" />
@@ -211,13 +212,7 @@
       <workItem from="1615008528283" duration="71961000" />
       <workItem from="1615371160983" duration="623000" />
       <workItem from="1616296531961" duration="2518000" />
-    </task>
-    <task id="LOCAL-00004" summary="3.1. Variables and Methods">
-      <created>1615010680753</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1615010680753</updated>
+      <workItem from="1616319291171" duration="857000" />
     </task>
     <task id="LOCAL-00005" summary="3.2. vec3 Utility Functions">
       <created>1615011163037</created>
@@ -555,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616318358129</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="implement bounding box in moving sphere">
+      <created>1616318624488</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1616318624488</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +576,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="8.3. Using Gamma Correction for Accurate Color Intensity" />
     <MESSAGE value="8.4. Fixing Shadow Acne" />
     <MESSAGE value="8.5. True Lambertian Reflection" />
     <MESSAGE value="8.1. An Abstract Class(trait) for Materials" />
@@ -599,7 +600,8 @@
     <MESSAGE value="BVHの実装を行う" />
     <MESSAGE value="BVHのデバッグを行う" />
     <MESSAGE value="2.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.5" />
+    <MESSAGE value="implement bounding box in moving sphere" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement bounding box in moving sphere" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

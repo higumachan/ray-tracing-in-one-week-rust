@@ -8,6 +8,7 @@ pub mod material;
 pub mod moving_sphere;
 pub mod ray;
 pub mod sphere;
+pub mod texture;
 pub mod vector3;
 
 pub fn to_pixel_value(c: f64) -> u8 {

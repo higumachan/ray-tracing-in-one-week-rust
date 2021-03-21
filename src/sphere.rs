@@ -3,6 +3,7 @@ use crate::hit::{Hit, HitRecord};
 use crate::material::material::Material;
 use crate::ray::Ray;
 use crate::vector3::{Point3, Vector3};
+use std::f64::consts::PI;
 use std::sync::Arc;
 
 #[derive(Debug, Clone)]
@@ -49,7 +50,8 @@ pub(crate) fn hit_sphere(
     root.map(|r| {
         let p = ray.at(r);
         let outward_normal = (&p - center) / radius;
-        HitRecord::new(p, r, outward_normal, ray, Arc::clone(material))
+        let uv = get_sphere_uv(&Point3::from(outward_normal.clone()));
+        HitRecord::new(p, r, uv.0, uv.1, outward_normal, ray, Arc::clone(material))
     })
 }
 
@@ -58,6 +60,13 @@ pub(crate) fn sphere_bounding_box(center: &Point3, radius: f64) -> AABB {
         center - &Vector3::new(radius, radius, radius),
         center + &Vector3::new(radius, radius, radius),
     )
+}
+
+pub(crate) fn get_sphere_uv(p: &Point3) -> (f64, f64) {
+    let theta = -p.y().acos();
+    let phi = f64::atan2(-p.z(), p.x()) + PI;
+
+    (phi / 2.0 * PI, theta / PI)
 }
 
 impl Hit for Sphere {
