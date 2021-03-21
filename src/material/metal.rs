@@ -33,6 +33,7 @@ impl Material for Metal {
         let scattered = Ray::new(
             record.point().clone(),
             reflected + Vector3::random_in_unit_sphere(rng) * self.fuzz,
+            input.time(),
         );
 
         (scattered.direction().dot(record.normal()) > 0.0)

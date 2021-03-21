@@ -1,7 +1,7 @@
 use crate::degrees_to_radians;
 use crate::ray::Ray;
 use crate::vector3::{Point3, Vector3};
-use rand::RngCore;
+use rand::{Rng, RngCore};
 
 pub struct Camera {
     origin: Point3,
@@ -12,6 +12,8 @@ pub struct Camera {
     v: Vector3,
     w: Vector3,
     lens_radius: f64,
+    time0: f64,
+    time1: f64,
 }
 
 impl Camera {
@@ -29,6 +31,8 @@ impl Camera {
         aspect_ratio: f64,
         aperture: f64,
         focus_dist: f64,
+        time0: f64,
+        time1: f64,
     ) -> Self {
         let theta = degrees_to_radians(vertical_fov);
         let h = f64::tan(theta / 2.0);
@@ -55,6 +59,8 @@ impl Camera {
             v,
             w,
             lens_radius,
+            time0,
+            time1,
         }
     }
 
@@ -69,6 +75,7 @@ impl Camera {
             &Vector3::from(self.lower_left_corner.clone()) + &hv + vv
                 - Vector3::from(self.origin.clone())
                 - offset,
+            rng.gen_range(self.time0..self.time1),
         )
     }
 }
@@ -82,6 +89,8 @@ impl Default for Camera {
             2.0,
             16.0 / 9.0,
             1.0,
+            1.0,
+            0.0,
             1.0,
         )
     }

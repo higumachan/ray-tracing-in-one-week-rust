@@ -5,15 +5,17 @@ pub struct Ray {
     origin: Point3,
     direction: Vector3,
     inv_direction: Vector3,
+    time: f64,
 }
 
 impl Ray {
-    pub fn new(origin: Point3, direction: Vector3) -> Self {
+    pub fn new(origin: Point3, direction: Vector3, time: f64) -> Self {
         let inv_direction = direction.invert();
         Ray {
             origin,
             direction,
             inv_direction,
+            time,
         }
     }
     pub fn origin(&self) -> &Point3 {
@@ -24,6 +26,9 @@ impl Ray {
     }
     pub fn inv_direction(&self) -> &Vector3 {
         &self.inv_direction
+    }
+    pub fn time(&self) -> f64 {
+        self.time
     }
 
     pub fn at(&self, t: f64) -> Point3 {

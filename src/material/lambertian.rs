@@ -35,7 +35,7 @@ impl Material for Lambertian {
 
         Some(ScatterResult::new(
             self.albedo.clone(),
-            Ray::new(record.point().clone(), scatter_direction),
+            Ray::new(record.point().clone(), scatter_direction, input.time()),
         ))
     }
 }

@@ -45,7 +45,7 @@ impl Material for Dielectric {
 
         Some(ScatterResult::new(
             Color::white(),
-            Ray::new(record.point().clone(), direction),
+            Ray::new(record.point().clone(), direction, input.time()),
         ))
     }
 }
