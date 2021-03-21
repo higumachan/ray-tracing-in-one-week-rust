@@ -22,33 +22,40 @@ impl Sphere {
     }
 }
 
+pub(crate) fn hit_sphere(
+    center: &Point3,
+    radius: f64,
+    material: &Arc<dyn Material>,
+    ray: &Ray,
+    t_min: f64,
+    t_max: f64,
+) -> Option<HitRecord> {
+    let oc = ray.origin() - center;
+    let a = ray.direction().length_squared();
+    let half_b = oc.dot(ray.direction());
+    let c = oc.length_squared() - radius.powi(2);
+    let discriminant = half_b.powi(2) - a * c;
+
+    if discriminant < 0.0 {
+        return None;
+    }
+
+    let sqrtd = discriminant.sqrt();
+
+    let root = Some((-half_b - sqrtd) / a)
+        .filter(|x| t_min <= *x && *x <= t_max)
+        .or_else(|| Some((-half_b + sqrtd) / a).filter(|x| t_min <= *x && *x <= t_max));
+
+    root.map(|r| {
+        let p = ray.at(r);
+        let outward_normal = (&p - center) / radius;
+        HitRecord::new(p, r, outward_normal, ray, Arc::clone(material))
+    })
+}
+
 impl Hit for Sphere {
     fn hit(&self, ray: &Ray, t_min: f64, t_max: f64) -> Option<HitRecord> {
-        let oc = ray.origin() - &self.center;
-        let a = ray.direction().length_squared();
-        let half_b = oc.dot(ray.direction());
-        let c = oc.length_squared() - self.radius.powi(2);
-        let discriminant = half_b.powi(2) - a * c;
-
-        if discriminant < 0.0 {
-            return None;
-        }
-
-        let sqrtd = discriminant.sqrt();
-        let root = (-half_b - sqrtd) / a;
-        if root < t_min || t_max < root {
-            return None;
-        }
-
-        let p = ray.at(root);
-        let outward_normal = (&p - &self.center) / self.radius;
-        Some(HitRecord::new(
-            p,
-            root,
-            outward_normal,
-            ray,
-            self.material.clone(),
-        ))
+        hit_sphere(&self.center, self.radius, &self.material, ray, t_min, t_max)
     }
 
     fn bounding_box(&self, _time0: f64, _time1: f64) -> Option<AABB> {

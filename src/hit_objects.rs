@@ -1,6 +1,7 @@
 use crate::bvh::aabb::AABB;
 use crate::camera::Camera;
 use crate::hit::{Hit, HitRecord};
+use crate::moving_sphere::MovingSphere;
 use crate::ray::Ray;
 use crate::sphere::Sphere;
 use crate::vector3::Point3;
@@ -9,31 +10,30 @@ use unwrap_ord::UnwrapOrd;
 #[derive(Debug, Clone)]
 pub enum HitObject {
     Sphere(Sphere),
+    MovingSphere(MovingSphere),
 }
 
 impl Hit for HitObject {
     fn hit(&self, ray: &Ray, t_min: f64, t_max: f64) -> Option<HitRecord> {
         match self {
             Self::Sphere(s) => s.hit(ray, t_min, t_max),
+            Self::MovingSphere(s) => s.hit(ray, t_min, t_max),
         }
     }
 
     fn bounding_box(&self, time0: f64, time1: f64) -> Option<AABB> {
         match self {
             Self::Sphere(s) => s.bounding_box(time0, time1),
+            Self::MovingSphere(s) => s.bounding_box(time0, time1),
         }
     }
 
     fn nearest_squared(&self, point: &Point3) -> f64 {
-        match self {
-            Self::Sphere(s) => s.nearest_squared(point),
-        }
+        unimplemented!()
     }
 
     fn farest_squared(&self, point: &Point3) -> f64 {
-        match self {
-            Self::Sphere(s) => s.farest_squared(point),
-        }
+        unimplemented!()
     }
 }
 
@@ -68,7 +68,6 @@ impl Hit for HitObjects {
         let mut record: Option<HitRecord> = None;
         for obj in &self.0 {
             let t = record.as_ref().map(|x| x.t()).unwrap_or(t_max);
-            let distance_sq = obj.farest_squared(ray.origin());
 
             record = obj.hit(ray, t_min, t).or(record.clone());
         }

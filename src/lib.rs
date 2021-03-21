@@ -5,6 +5,7 @@ pub mod camera;
 pub mod hit;
 pub mod hit_objects;
 pub mod material;
+pub mod moving_sphere;
 pub mod ray;
 pub mod sphere;
 pub mod vector3;

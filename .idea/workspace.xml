@@ -15,11 +15,16 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="BVHの実装を行う">
+    <list default="true" id="74cee7a8-bdb9-4a93-9063-8e3a464ae4a0" name="Default Changelist" comment="BVHのデバッグを行う">
+      <change afterPath="$PROJECT_DIR$/examples/n_2_5_putting_everything_together.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/moving_sphere.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/result/10_2_snells_law.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/assets/result/10_2_snells_law.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/10_2_snells_law.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/10_2_snells_law.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/15_1_parallel_with_bvh.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/15_1_parallel_with_bvh.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bvh/aabb.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/bvh/aabb.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bvh/node.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/bvh/node.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hit_objects.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/hit_objects.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sphere.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sphere.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,23 +77,9 @@
       <recent name="$PROJECT_DIR$/src/material" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Run 15_1_parallel_with_bvh">
-    <configuration name="Run 12_2_generating_sample_rays" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 12_2_generating_sample_rays" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Run 13_1_a_final_render (1)" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 13_1_a_final_render" />
+  <component name="RunManager" selected="Cargo.Run n_2_5_putting_everything_together">
+    <configuration name="Run 10_2_snells_law" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example 10_2_snells_law" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="allFeatures" value="false" />
@@ -143,6 +134,20 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Run n_2_5_putting_everything_together" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package ray-tracing-in-one-week-rust --example n_2_5_putting_everything_together" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value="run --package ray-tracing-in-one-week-rust --bin ray-tracing-in-one-week-rust" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -179,19 +184,19 @@
     <list>
       <item itemvalue="Cargo.Run" />
       <item itemvalue="Cargo.bench" />
-      <item itemvalue="Cargo.Run 12_2_generating_sample_rays" />
       <item itemvalue="Cargo.Run 13_1_a_final_render" />
       <item itemvalue="Cargo.Run 14_1_parallel" />
-      <item itemvalue="Cargo.Run 13_1_a_final_render (1)" />
       <item itemvalue="Cargo.Run 15_1_parallel_with_bvh" />
+      <item itemvalue="Cargo.Run 10_2_snells_law" />
+      <item itemvalue="Cargo.Run n_2_5_putting_everything_together" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Run n_2_5_putting_everything_together" />
+        <item itemvalue="Cargo.Run 10_2_snells_law" />
         <item itemvalue="Cargo.Run 15_1_parallel_with_bvh" />
         <item itemvalue="Cargo.Run 14_1_parallel" />
         <item itemvalue="Cargo.Run 13_1_a_final_render" />
-        <item itemvalue="Cargo.Run 13_1_a_final_render (1)" />
-        <item itemvalue="Cargo.Run 12_2_generating_sample_rays" />
       </list>
     </recent_temporary>
   </component>
@@ -199,6 +204,7 @@
     <option name="runRustfmtOnSave" value="true" />
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
     <option name="useRustfmt" value="true" />
+    <option name="version" value="2" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -208,14 +214,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615008527044</updated>
-      <workItem from="1615008528283" duration="67746000" />
-    </task>
-    <task id="LOCAL-00002" summary="2.3. Adding a Progress Indicator">
-      <created>1615009536200</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1615009536200</updated>
+      <workItem from="1615008528283" duration="71961000" />
+      <workItem from="1615371160983" duration="623000" />
+      <workItem from="1616296531961" duration="2518000" />
     </task>
     <task id="LOCAL-00003" summary="3.1. Variables and Methods">
       <created>1615010570815</created>
@@ -553,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615218371850</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="BVHのデバッグを行う">
+      <created>1615302314740</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1615302314740</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,9 +577,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="8.1. A Simple Diffuse Material" />
     <MESSAGE value="8.2. Limiting the Number of Child Rays" />
     <MESSAGE value="8.3. Using Gamma Correction for Accurate Color Intensity" />
     <MESSAGE value="8.4. Fixing Shadow Acne" />
@@ -596,7 +604,8 @@
     <MESSAGE value="breakするのはだめ" />
     <MESSAGE value="めっちゃ時間かけて見る。" />
     <MESSAGE value="BVHの実装を行う" />
-    <option name="LAST_COMMIT_MESSAGE" value="BVHの実装を行う" />
+    <MESSAGE value="BVHのデバッグを行う" />
+    <option name="LAST_COMMIT_MESSAGE" value="BVHのデバッグを行う" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -2,7 +2,7 @@ use rand::prelude::ThreadRng;
 use rand::{thread_rng, Rng};
 use ray_tracing_in_one_week_rust::camera::Camera;
 use ray_tracing_in_one_week_rust::hit::Hit;
-use ray_tracing_in_one_week_rust::hit_objects::HitObjects;
+use ray_tracing_in_one_week_rust::hit_objects::{HitObject, HitObjects};
 use ray_tracing_in_one_week_rust::material::dielectric::Dielectric;
 use ray_tracing_in_one_week_rust::material::lambertian::Lambertian;
 use ray_tracing_in_one_week_rust::material::metal::Metal;
@@ -11,7 +11,7 @@ use ray_tracing_in_one_week_rust::sphere::Sphere;
 use ray_tracing_in_one_week_rust::vector3::{Color, Point3, Vector3};
 use std::collections::hash_map::RandomState;
 use std::f64::INFINITY;
-use std::rc::Rc;
+use std::sync::Arc;
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -24,7 +24,7 @@ fn ray_color(rng: &mut ThreadRng, ray: &Ray, world: &HitObjects, depth: usize) -
     rec.map(|r| {
         Color::from(
             r.material()
-                .scatter(ray, &r)
+                .scatter(rng, ray, &r)
                 .map(|result| {
                     Vector3::from(result.attenuation).hadamard_product(&Vector3::from(ray_color(
                         rng,
@@ -54,27 +54,27 @@ fn main() {
 
     // World
     let mut world = HitObjects::new();
-    let material_ground = Rc::new(Lambertian::new(Color::new(0.8, 0.8, 0.0)));
-    let material_center = Rc::new(Dielectric::new(1.5));
-    let material_left = Rc::new(Dielectric::new(1.5));
-    let material_right = Rc::new(Metal::new(Color::new(0.8, 0.6, 0.2), 1.0));
+    let material_ground = Arc::new(Lambertian::new(Color::new(0.8, 0.8, 0.0)));
+    let material_center = Arc::new(Dielectric::new(1.5));
+    let material_left = Arc::new(Dielectric::new(1.5));
+    let material_right = Arc::new(Metal::new(Color::new(0.8, 0.6, 0.2), 1.0));
 
-    world.add(Box::new(Sphere::new(
+    world.add(HitObject::Sphere(Sphere::new(
         Point3::new(0.0, -100.5, -1.0),
         100.0,
         material_ground,
     )));
-    world.add(Box::new(Sphere::new(
+    world.add(HitObject::Sphere(Sphere::new(
         Point3::new_z(-1.0),
         0.5,
         material_center,
     )));
-    world.add(Box::new(Sphere::new(
+    world.add(HitObject::Sphere(Sphere::new(
         Point3::new(-1.0, 0.0, -1.0),
         0.5,
         material_left,
     )));
-    world.add(Box::new(Sphere::new(
+    world.add(HitObject::Sphere(Sphere::new(
         Point3::new(1.0, 0.0, -1.0),
         0.5,
         material_right,
@@ -96,7 +96,7 @@ fn main() {
                 .map(|_| {
                     let u = (i as f64 + rng.gen::<f64>()) / (image_width - 1) as f64;
                     let v = (j as f64 + rng.gen::<f64>()) / (image_height - 1) as f64;
-                    let r = camera.ray(u, v);
+                    let r = camera.ray(&mut rng, u, v);
 
                     Vector3::from(ray_color(&mut rng, &r, &world, max_depth))
                         / samples_per_pixel as f64
