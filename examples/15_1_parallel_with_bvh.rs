@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use rand::prelude::ThreadRng;
 use rand::{thread_rng, Rng};
 use ray_tracing_in_one_week_rust::bvh::node::Node;
@@ -109,7 +110,7 @@ fn random_scene(rng: &mut ThreadRng) -> HitObjects {
 fn main() {
     // Image
     let aspect_ratio = 3.0 / 2.0;
-    let image_width = 4096usize;
+    let image_width = 8192usize;
     let image_height = (image_width as f64 / aspect_ratio) as usize;
     let samples_per_pixel = 100;
     let max_depth = 50;
@@ -144,24 +145,43 @@ fn main() {
     println!("{} {}", image_width, image_height);
     println!("255");
 
-    for j in (0..image_height).rev() {
-        eprint!("\rScanlines remaining: {:3}", j);
-        for i in (0..image_width) {
-            let pixel_color: Vector3 = (0..samples_per_pixel)
+    let pixels: Vec<Vec<Color>> = (0..image_height)
+        .rev()
+        .into_iter()
+        .collect_vec()
+        .into_par_iter()
+        .map(|j| {
+            eprintln!("start {}", j);
+            (0..image_width)
+                .into_iter()
+                .collect_vec()
                 .into_par_iter()
-                .map(|_| {
-                    let mut rng = thread_rng();
-                    let u = (i as f64 + rng.gen::<f64>()) / (image_width - 1) as f64;
-                    let v = (j as f64 + rng.gen::<f64>()) / (image_height - 1) as f64;
-                    let r = camera.ray(&mut rng, u, v);
+                .map(|i| {
+                    let pixel_color: Vector3 = (0..samples_per_pixel)
+                        .into_iter()
+                        .collect_vec()
+                        .into_par_iter()
+                        .map(|_| {
+                            let mut rng = thread_rng();
+                            let u = (i as f64 + rng.gen::<f64>()) / (image_width - 1) as f64;
+                            let v = (j as f64 + rng.gen::<f64>()) / (image_height - 1) as f64;
+                            let r = camera.ray(&mut rng, u, v);
 
-                    Vector3::from(ray_color(&mut rng, &r, &world, max_depth))
-                        / samples_per_pixel as f64
+                            Vector3::from(ray_color(&mut rng, &r, &world, max_depth))
+                                / samples_per_pixel as f64
+                        })
+                        .sum::<Vector3>();
+                    Color::from(pixel_color.sqrt())
                 })
-                .sum::<Vector3>();
-            let pixel_color = Color::from(pixel_color.sqrt());
+                .collect()
+        })
+        .collect();
+
+    for row in pixels {
+        for pixel_color in row {
             println!("{}", pixel_color);
         }
     }
+
     eprintln!("\nDone");
 }
